@@ -49,5 +49,5 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     user
   });
-  Actions.main();
+  Actions.main ();
 };
