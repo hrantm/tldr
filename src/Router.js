@@ -10,11 +10,6 @@ import UserShow from './components/UserShow';
 const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 65  }}>
-    <Scene key="auth">
-      <Scene key='splash' component={Splash} />
-      <Scene key="login" component={LoginForm} title="Please Login"/>
-      <Scene key="signup" component={SignupForm} title="Please Signup"/>
-    </Scene>
     <Scene key="main">
       <Scene
         key="record"
@@ -27,6 +22,12 @@ const RouterComponent = () => {
          />
       <Scene key="notesIndex" component={NotesIndex} title="Notes" />
       <Scene key="userShow" component={UserShow} title="Settings" />
+    </Scene>
+
+    <Scene key="auth">
+      <Scene key='splash' component={Splash} />
+      <Scene key="login" component={LoginForm} title="Please Login"/>
+      <Scene key="signup" component={SignupForm} title="Please Signup"/>
     </Scene>
     </Router>
   );
