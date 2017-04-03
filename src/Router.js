@@ -4,6 +4,8 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Home from './components/Home';
 import Splash from './components/Splash';
+import NotesIndex from './components/NotesIndex';
+import UserShow from './components/UserShow';
 
 const RouterComponent = () => {
   return (
@@ -14,7 +16,17 @@ const RouterComponent = () => {
       <Scene key="signup" component={SignupForm} title="Please Signup"/>
     </Scene>
     <Scene key="main">
-      <Scene key="record" component={Home} title="Record" />
+      <Scene
+        key="record"
+        component={Home}
+        title="Record"
+        onRight={() => Actions.notesIndex()}
+        rightTitle="Notes"
+        onLeft={() => Actions.userShow()}
+        leftTitle="Settings"
+         />
+      <Scene key="notesIndex" component={NotesIndex} title="Notes" />
+      <Scene key="userShow" component={UserShow} title="Settings" />
     </Scene>
     </Router>
   );

@@ -8,7 +8,6 @@ class Splash extends React.Component {
   render(){
     return(
       <Card>
-
         <View >
           <CardSection>
             <Text>
@@ -16,7 +15,6 @@ class Splash extends React.Component {
             </Text>
           </CardSection>
         </View>
-
         <View >
           <CardSection>
             <Button
