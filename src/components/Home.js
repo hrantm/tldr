@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
-import { rawTextChanged } from '../actions';
+import { rawTextChanged, createNote } from '../actions';
 import { connect } from 'react-redux';
 
 class Home extends React.Component {
-
+  
   onTextChange (e) {
     console.log("e:", e);
-    // debugger
     this.props.rawTextChanged(e);
   }
 
   onButtonPress () {
-    console.log("hi");
+    console.log("hi", this.props.rawText);
+    this.props.createNote(this.props.rawText);
   }
 
   render () {
@@ -38,10 +38,11 @@ class Home extends React.Component {
 }
 
 // export default Home;
-const mapStateToProps = ({ notes }) => {
-  const { rawText } = notes;
+const mapStateToProps = ({ record }) => {
+  const { rawText } = record;
   return { rawText };
 };
 
 export default connect(mapStateToProps, {
-rawTextChanged } )(Home);
+rawTextChanged,
+createNote } )(Home);

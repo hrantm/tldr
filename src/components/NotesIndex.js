@@ -1,20 +1,50 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ListView } from 'react-native';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+import ListItem from './ListItem';
+import { fetchNotes } from '../actions';
+
 
 class NotesIndex extends React.Component {
+
+  componentWillMount () {
+    this.props.fetchNotes();
+    this.createDataSource(this.props);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.createDataSource(nextProps);
+  }
+
+  createDataSource ({ notes }) {
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+    this.dataSource = ds.cloneWithRows(notes);
+  }
+
+  renderRow (note) {
+    console.log('renderrow', note);
+    return <ListItem note={note} />;
+  }
+
   render () {
     return (
-      <View>
-        <Text>Note goes here</Text>
-        <Text>Note goes here</Text>
-        <Text>Note goes here</Text>
-        <Text>Note goes here</Text>
-        <Text>Note goes here</Text>
-        <Text>Note goes here</Text>
-        <Text>Note goes here</Text>
-      </View>
+      <ListView
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+        />
     );
   }
 }
 
-export default NotesIndex;
+const mapStateToProps = state => {
+  const notes = _.map(state.notes, (val, uid) => {
+    return { ...val, uid };
+  });
+  return { notes };
+};
+
+export default connect(mapStateToProps, { fetchNotes } )(NotesIndex);
