@@ -45,7 +45,7 @@ xhr.addEventListener("readystatechange", function () {
 
 xhr.open("POST", "http://api.smmry.com/?SM_API_KEY=2CA94C7AE9&SM_LENGTH=3");
 xhr.setRequestHeader("cache-control", "no-cache");
-xhr.setRequestHeader("postman-token", "56c301ef-6848-acb3-beba-70743a28cd9b");
+// xhr.setRequestHeader("postman-token", "56c301ef-6848-acb3-beba-70743a28cd9b");
 
 xhr.send(data);
   //
