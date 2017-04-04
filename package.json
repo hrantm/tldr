@@ -9,6 +9,8 @@
   "dependencies": {
     "axios": "^0.16.0",
     "firebase": "^3.7.4",
+    "node-summary": "^1.1.0",
+    "nodejs-text-summarizer": "^2.0.3",
     "react": "15.4.2",
     "react-native": "0.42.3",
     "react-native-router-flux": "^3.38.0",
