@@ -25,7 +25,6 @@ class NotesIndex extends React.Component {
   }
 
   renderRow (note) {
-    console.log('renderrow', note);
     return <ListItem note={note} />;
   }
 
