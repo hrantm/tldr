@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { Button, CardSection } from './common';
 import firebase from 'firebase';
 
 class UserShow extends React.Component {
@@ -7,6 +8,12 @@ class UserShow extends React.Component {
     return (
       <View>
         <Text>{firebase.auth().currentUser.email}</Text>
+        <CardSection>
+          <Button
+            onPress={() => console.log("logout")}>
+            Logout
+          </Button>
+        </CardSection>
       </View>
     );
   }
