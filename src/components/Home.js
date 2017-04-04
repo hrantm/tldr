@@ -5,14 +5,12 @@ import { rawTextChanged, createNote } from '../actions';
 import { connect } from 'react-redux';
 
 class Home extends React.Component {
-  
+
   onTextChange (e) {
-    console.log("e:", e);
     this.props.rawTextChanged(e);
   }
 
   onButtonPress () {
-    console.log("hi", this.props.rawText);
     this.props.createNote(this.props.rawText);
   }
 
