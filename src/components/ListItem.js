@@ -13,7 +13,7 @@ class ListItem extends React.Component {
     const { rawText } = this.props.note;
     return (
       <TouchableOpacity onPress={this.onPress.bind(this)}>
-        <CardSection>
+        <CardSection style={styles.containerStyle}>
           <Text style={styles.titleStyle}>
             {`${rawText.slice(0, 15)}...`}
           </Text>
@@ -30,6 +30,15 @@ const styles = {
     paddingTop: 15,
     paddingBottom: 15,
     color: "#2f4f4f"
+  },
+  containerStyle: {
+    borderBottomWidth: 3,
+    padding: 5,
+    backgroundColor: '#fff',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    borderColor: '#ddd',
+    position: 'relative'
   }
 };
 
