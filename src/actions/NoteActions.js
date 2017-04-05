@@ -16,19 +16,21 @@ export const rawTextChanged = (rawText) => {
 export const createNote = (rawText) => {
   const { currentUser } = firebase.auth();
 
-  summarizeText(rawText);
+
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/notes`)
     .push({ rawText })
-    .then(() => {
+    .then(response => {
+      // console.log(response.path.o[3]);
+      summarizeText(rawText, response.path.o[3]);
       dispatch({type: CREATE_NOTE});
       Actions.notesIndex();
     });
   };
 };
 // U6ObsUAChQmsh24c0cDRzjYQvwwep1pZmiyjsnQZG8rYX9x8do
-const summarizeText = (rawText) => {
+const summarizeText = (rawText, noteId) => {
   let length = 2;
   let title = 'SUMMARY';
   var data = new FormData();
@@ -38,11 +40,29 @@ data.append("sm_api_input", `${rawText}`);
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
+// xhr.addEventListener("readystatechange", function () {
+//   if (this.readyState === 4) {
+//     console.log(JSON.parse(this.response));
+//   }
+// });
+
+// snapshot.ref().child('messagedate').set( Firebase.ServerValue.TIMESTAMP );
+
+
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
-    console.log(JSON.parse(this.response));
+    // console.log(JSON.parse(this.response));
+    let p = Promise.resolve(this.response);
+    p.then(() => console.log(JSON.parse(p._65).sm_api_content));
+    // p.then(() => snapshot.ref().child('summary').set(p._65));
   }
 });
+
+// xhr.addEventListener("readystatechange", function () {
+//   if (this.readyState === 4) {
+//     Promise.resolve(console.log(JSON.parse(this.response)));
+//   }
+// });
 
 xhr.open("POST", "http://api.smmry.com/?SM_API_KEY=2CA94C7AE9&SM_LENGTH=3");
 xhr.setRequestHeader("cache-control", "no-cache");
