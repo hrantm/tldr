@@ -20,7 +20,9 @@ const styles = {
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
+    paddingTop: 10,
+    paddingBottom: 10
   }
 };
 
