@@ -23,7 +23,7 @@ const styles = {
     paddingRight: 15,
     paddingTop: 10,
     paddingBottom: 10,
-    color: '#2f4f4f'
+    color: '#2a2a2a'
   }
 };
 
