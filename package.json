@@ -13,9 +13,7 @@
     "nodejs-text-summarizer": "^2.0.3",
     "react": "15.4.2",
     "react-native": "0.42.3",
-
     "react-native-audio": "^3.2.2",
-
     "react-native-router-flux": "^3.38.0",
     "react-native-sound": "^0.9.1",
     "react-redux": "^5.0.3",
