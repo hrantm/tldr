@@ -34,6 +34,7 @@ const summarizeText = (rawText, noteId) => {
   let length = 2;
   let title = 'SUMMARY';
   var data = new FormData();
+  const { currentUser } = firebase.auth();
 
 data.append("sm_api_input", `${rawText}`);
 
@@ -47,14 +48,19 @@ xhr.withCredentials = true;
 // });
 
 // snapshot.ref().child('messagedate').set( Firebase.ServerValue.TIMESTAMP );
+// ref.on('child_added', function(snapshot) {
+//     snapshot.ref().update({ messagedate: Date.now() });
+// });
+//
+// firebase.database().ref(`/users/${currentUser.uid}/notes`)
 
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
     // console.log(JSON.parse(this.response));
     let p = Promise.resolve(this.response);
-    p.then(() => console.log(JSON.parse(p._65).sm_api_content));
-    // p.then(() => snapshot.ref().child('summary').set(p._65));
+    // p.then(() => console.log(JSON.parse(p._65).sm_api_content));
+    p.then(() => firebase.database().ref(`/users/${currentUser.uid}/notes/${noteId}`).child('summary').set(JSON.parse(p._65).sm_api_content));
   }
 });
 
