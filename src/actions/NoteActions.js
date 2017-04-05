@@ -36,6 +36,7 @@ const summarizeText = (rawText, noteId) => {
   var data = new FormData();
   const { currentUser } = firebase.auth();
 
+
 data.append("sm_api_input", `${rawText}`);
 
 var xhr = new XMLHttpRequest();
@@ -61,6 +62,7 @@ xhr.addEventListener("readystatechange", function () {
     let p = Promise.resolve(this.response);
     // p.then(() => console.log(JSON.parse(p._65).sm_api_content));
     p.then(() => firebase.database().ref(`/users/${currentUser.uid}/notes/${noteId}`).child('summary').set(JSON.parse(p._65).sm_api_content));
+
   }
 });
 

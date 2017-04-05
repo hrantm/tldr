@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scene, Router, Actions } from 'react-native-router-flux';
+import { Scene, Router, Actions, ActionConst } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Home from './components/Home';
@@ -10,14 +10,33 @@ import NoteShow from './components/NoteShow';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65  }}>
-    <Scene key="auth">
-      <Scene key='splash' component={Splash} />
-      <Scene key="login" component={LoginForm} title="Please Login"/>
-      <Scene key="signup" component={SignupForm} title="Please Signup"/>
-    </Scene>
-    <Scene key="main">
+    <Router >
+    <Scene
+      key="auth">
       <Scene
+        key='splash'
+        component={Splash}
+        hideNavBar={true}/>
+      <Scene
+        sceneStyle={ styles.bannerStyle }
+        hideNavBar={false}
+        navigationBarStyle={ styles.navBar }
+        key="login"
+        component={LoginForm}
+        direction='vertical'
+        title="Log in"/>
+      <Scene
+        hideNavBar={false}
+        direction='vertical'
+        key="signup"
+        component={SignupForm}
+        title="Sign up"/>
+    </Scene>
+    <Scene
+      key="main"
+      sceneStyle={ styles.loginHeaderStyle }>
+      <Scene
+        hideNavBar={false}
         key="record"
         component={Home}
         title="Record"
@@ -26,13 +45,36 @@ const RouterComponent = () => {
         onLeft={() => Actions.userShow()}
         leftTitle="Settings"
          />
-      <Scene key="notesIndex" component={NotesIndex} title="Notes" />
-      <Scene key="userShow" component={UserShow} title="Settings" />
-      <Scene key="noteShow" component={NoteShow} title="Note" />
+      <Scene
+        hideNavBar={false}
+        key="notesIndex"
+        component={NotesIndex}
+        title="Notes" />
+      <Scene
+        hideNavBar={false}
+        key="userShow"
+        component={UserShow}
+        direction='leftToRight'
+        title="Settings" />
+      <Scene
+        hideNavBar={false}
+        key="noteShow"
+        component={NoteShow}
+        title="Note" />
     </Scene>
 
     </Router>
   );
 };
+
+const styles = {
+  bannerStyle: {
+    paddingTop: 65
+  },
+  loginHeaderStyle: {
+    backgroundColor: 'black',
+    justifyContent: 'flex-start'
+  }
+}
 
 export default RouterComponent;
