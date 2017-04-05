@@ -25,8 +25,11 @@ class ListItem extends React.Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 18,
-    paddingLeft: 15
+    fontSize: 40,
+    paddingLeft: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
+    color: "#2f4f4f"
   }
 };
 
