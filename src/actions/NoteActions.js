@@ -1,7 +1,7 @@
 import { RAW_TEXT_CHANGED, CREATE_NOTE, RECEIVE_NOTES } from './types';
 import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
-import axios from 'axios';
+// import axios from 'axios';
 import SummaryTool from 'node-summary';
 // var http = require("http");
 
