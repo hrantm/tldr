@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { CardSection } from './common';
 
 class NoteShow extends React.Component {
@@ -7,11 +7,11 @@ class NoteShow extends React.Component {
   render () {
     const { rawText } = this.props.note;
     return (
-      <CardSection>
+      <ScrollView>
         <Text style={styles.titleStyle}>
           {rawText}
         </Text>
-      </CardSection>
+      </ScrollView>
     );
   }
 }
