@@ -15,7 +15,7 @@ class ListItem extends React.Component {
       <TouchableOpacity onPress={this.onPress.bind(this)}>
         <CardSection>
           <Text style={styles.titleStyle}>
-            {rawText.slice(0, 10)}
+            {`${rawText.slice(0, 15)}...`}
           </Text>
         </CardSection>
       </TouchableOpacity>
