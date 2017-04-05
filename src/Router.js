@@ -26,6 +26,7 @@ const RouterComponent = () => {
         direction='vertical'
         title="Log in"/>
       <Scene
+        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         direction='vertical'
         key="signup"
@@ -36,6 +37,7 @@ const RouterComponent = () => {
       key="main"
       sceneStyle={ styles.loginHeaderStyle }>
       <Scene
+        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="record"
         component={Home}
@@ -46,17 +48,20 @@ const RouterComponent = () => {
         leftTitle="Settings"
          />
       <Scene
+        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="notesIndex"
         component={NotesIndex}
         title="Notes" />
       <Scene
+        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="userShow"
         component={UserShow}
         direction='leftToRight'
         title="Settings" />
       <Scene
+        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="noteShow"
         component={NoteShow}
