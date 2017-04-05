@@ -10,11 +10,11 @@ import NoteShow from './components/NoteShow';
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65  }}>
+    <Router sceneStyle={ styles.bannerStyle }>
     <Scene key="auth">
       <Scene key='splash' component={Splash} />
-      <Scene key="login" component={LoginForm} title="Please Login"/>
-      <Scene key="signup" component={SignupForm} title="Please Signup"/>
+      <Scene key="login" component={LoginForm} title="Log in"/>
+      <Scene key="signup" component={SignupForm} title="Sign up"/>
     </Scene>
     <Scene key="main">
       <Scene
@@ -34,5 +34,11 @@ const RouterComponent = () => {
     </Router>
   );
 };
+
+const styles = {
+  bannerStyle: {
+    paddingTop: 65
+  }
+}
 
 export default RouterComponent;
