@@ -16,8 +16,24 @@ class Home extends React.Component {
   }
 
   render () {
+    // <Recorder />
+
     return (
-      <Recorder />
+        <Card>
+          <CardSection>
+            <Input
+              label="Text"
+              onChangeText={this.onTextChange.bind(this)}
+              value={this.props.rawText}
+            />
+          </CardSection>
+
+          <CardSection>
+            <Button onPress={this.onButtonPress.bind(this)}>
+              Enter Data
+            </Button>
+          </CardSection>
+        </Card>
     );
   }
 }
@@ -31,19 +47,3 @@ const mapStateToProps = ({ record }) => {
 export default connect(mapStateToProps, {
 rawTextChanged,
 createNote } )(Home);
-
-// <Card>
-//   <CardSection>
-//     <Input
-//       label="Text"
-//       onChangeText={this.onTextChange.bind(this)}
-//       value={this.props.rawText}
-//     />
-//   </CardSection>
-//
-//   <CardSection>
-//     <Button onPress={this.onButtonPress.bind(this)}>
-//       Enter Data
-//     </Button>
-//   </CardSection>
-// </Card>
