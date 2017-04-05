@@ -7,13 +7,17 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.16.0",
     "firebase": "^3.7.4",
+    "node-summary": "^1.1.0",
+    "nodejs-text-summarizer": "^2.0.3",
     "react": "15.4.2",
     "react-native": "0.42.3",
     "react-native-router-flux": "^3.38.0",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "unirest": "^0.5.1"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
