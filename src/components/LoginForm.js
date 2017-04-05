@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 
@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
 
   render () {
     return (
-      <Card>
+      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
         <CardSection>
           <Input
             label="Email"
@@ -61,12 +61,21 @@ class LoginForm extends React.Component {
           {this.renderButton()}
         </CardSection>
 
-      </Card>
+      </Image>
     );
   }
 }
 
 const styles = {
+  pageViewStyle: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center',

@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Image, Text } from 'react-native';
 import { Button, CardSection } from './common';
 import firebase from 'firebase';
 
 class UserShow extends React.Component {
   render () {
     return (
-      <View>
+      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
         <Text>Email:</Text>
         <Text>{firebase.auth().currentUser.email}</Text>
         <Text>About:</Text>
@@ -17,8 +17,20 @@ class UserShow extends React.Component {
             Logout
           </Button>
         </CardSection>
-      </View>
+      </Image>
     );
+  }
+}
+
+const styles = {
+  pageViewStyle: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 }
 
