@@ -27,12 +27,11 @@ export const createNote = (rawText) => {
     });
   };
 };
-// U6ObsUAChQmsh24c0cDRzjYQvwwep1pZmiyjsnQZG8rYX9x8do
+
 const summarizeText = (rawText) => {
   let length = 2;
   let title = 'SUMMARY';
   var data = new FormData();
-
 data.append("sm_api_input", `${rawText}`);
 
 var xhr = new XMLHttpRequest();
@@ -40,7 +39,7 @@ xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
-    console.log(JSON.parse(this.response));
+    console.log(this.responseText);
   }
 });
 
