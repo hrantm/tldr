@@ -6,16 +6,16 @@ import { Actions } from 'react-native-router-flux';
 class ListItem extends React.Component {
 
   onPress () {
-    Actions.noteShow({note: this.props.note});
+    Actions.articleShow({article: this.props.article})
   }
 
   render () {
-    const { rawText } = this.props.note;
+    const { article } = this.props;
     return (
       <TouchableOpacity onPress={this.onPress.bind(this)}>
         <CardSection>
           <Text style={styles.titleStyle}>
-            {rawText.slice(0, 10)}
+            {article.title}
           </Text>
         </CardSection>
       </TouchableOpacity>

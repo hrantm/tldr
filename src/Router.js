@@ -2,11 +2,10 @@ import React from 'react';
 import { Scene, Router, Actions, ActionConst } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
-import Home from './components/Home';
 import Splash from './components/Splash';
-import NotesIndex from './components/NotesIndex';
+import ArticleIndex from './components/ArticleIndex';
 import UserShow from './components/UserShow';
-import NoteShow from './components/NoteShow';
+import ArticleShow from './components/ArticleShow';
 
 const RouterComponent = () => {
   return (
@@ -36,22 +35,11 @@ const RouterComponent = () => {
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
-        key="record"
-        component={Home}
-        title="Record"
-        onRight={() => Actions.notesIndex()}
-        rightTitle="Notes"
-        onLeft={() => Actions.userShow()}
+        key="articleFeed"
+        component={ArticleIndex}
+        title="Feed"
         leftTitle="Settings"
-         />
-      <Scene
-        sceneStyle={ styles.bannerStyle }
-        hideNavBar={false}
-        key="notesIndex"
-        component={NotesIndex}
-        title="Notes"
-        onLeft={() => Actions.record()}
-        leftTitle="Record"
+        onLeft={() => Actions.userShow()}
         />
       <Scene
         sceneStyle={ styles.bannerStyle }
@@ -61,13 +49,13 @@ const RouterComponent = () => {
         direction='leftToRight'
         title="Settings"
         rightTitle="Record"
-        onRight={() => Actions.record()}
+        onRight={() => Actions.articleFeed()}
         />
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
-        key="noteShow"
-        component={NoteShow}
+        key="articleShow"
+        component={ArticleShow}
         title="Note"
         />
     </Scene>
