@@ -10,7 +10,7 @@ class UserShow extends React.Component {
         <Text>Email:</Text>
         <Text>{firebase.auth().currentUser.email}</Text>
         <Text>About:</Text>
-        <Text>Scriblr is a mobile note taking application made with react-native in 1 week. </Text>
+        <Text>TLDV (Too Long Didn't View) is a mobile news feed application made with react-native in 1 week. </Text>
         <CardSection>
           <Button
             onPress={() => console.log("logout")}>

@@ -15,6 +15,7 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
+import com.oney.WebRTCModule.WebRTCModulePackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,10 +29,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
 
-
             new RNSoundPackage(),
-            new ReactNativeAudioPackage()
-
+            new ReactNativeAudioPackage(),
+            new WebRTCModulePackage()
       );
     }
   };

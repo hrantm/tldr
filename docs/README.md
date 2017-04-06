@@ -1,24 +1,24 @@
-## Scriblr
+## TLDV
 
 ### Background
 
-Taking notes during meetings and lectures in both tedious and time consuming. This mobile application will record long speeches, convert the speech to a text file and summarize the text file and turn it into a small manageable note. Users will be able to save their notes, and revisit them individually.
+Sometimes articles can be long winded and have difficulty holding your attention. This mobile application will take articles from the web, summarize the text file into small manageable notes, and display a feed of summarized articles to the user. Users will be able to visit full articles if they wish and will be able to filter their articles based on category.
 
-This will be a great tool for college students, business professionals as well as the hearing impaired.
+This will be a great tool for getting quick condensed news on the go!
 
 Development of the features in this application will be guided by
 [SMMRY](http://smmry.com/about) and
-[WATSON](https://github.com/watson-developer-cloud/node-sdk)
+[NewsAPi](https://newsapi.org/#documentation)
 
 ### Functionality & MVP
 
 With this application, users will be able to:
 
 - [ ] Sign in/Log in,
-- [ ] Record Audio,
-- [ ] Convert recorded speech to text,
-- [ ] Summarize large blocks of text into notes,
-- [ ] Create, Read, Delete Notes
+- [ ] Article feed shows all articles,
+- [ ] Article show displays single article summary and links to original article,
+- [ ] Summarize articles into concise notes,
+- [ ] User can filter articles based on category
 - [ ] Demo Page
 
 
@@ -28,15 +28,15 @@ With this application, users will be able to:
 
 ### Technologies & Technical Challenges
 
-This mobile application will be implemented with JavaScript, Ruby, Rails, React Native, the Watson API and the SMMRY API
+This mobile application will be implemented with JavaScript, Ruby, Rails, React Native, the NEWS API and the SMMRY API
 
 The primary technical challenges will be:
 
 - Implementing React Native Framework
-- Interacting with the Watson and SMMRY API
+- Interacting with the News and SMMRY API
 - Incorporating a iOS emulator into the Demo Page
 
-Additionally another one of our challenges will be to make the app accessible to people with hearing impairments at every level
+Additionally another one of our challenges will be to aggregate the news and update our database with new news
 
 ### Group Members & Work Breakdown
 
@@ -54,7 +54,7 @@ Ryley's primary responsibility will be
 - Build out efficient component hierarchy
 
 Daniel's primary responsibility will be
-- Set up relationship between application and Watson API
+- Set up relationship between application and News API
 - Set up relationship between application and SMMRY API
 - Build Demo Page
 
@@ -92,7 +92,5 @@ Daniel's primary responsibility will be
 - Put on product Hunt
 
 ### Bonus Features
-- Share notes with friends
-- Translate notes
-- Text to speech
-- Online Dashboard for viewing notes(web)
+- More categories
+- matching web application

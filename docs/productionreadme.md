@@ -6,3 +6,8 @@
 - INSUFFICIENT VARIABLES bug with SMMRY api
   + solved with using postman to form vanilla javascript ajax request. still need to change json into a promise
 - google api gives 403 error. need better            
+
+
+- switching to android no avail
+
+- decided to change speech to text to an new aggregation website
