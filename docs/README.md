@@ -1,4 +1,4 @@
-## TLDV
+## TLDV (Too Long Didn't View)
 
 ### Background
 
@@ -8,7 +8,7 @@ This will be a great tool for getting quick condensed news on the go!
 
 Development of the features in this application will be guided by
 [SMMRY](http://smmry.com/about) and
-[NewsAPi](https://newsapi.org/#documentation)
+[NewsAPI](https://newsapi.org/#documentation)
 
 ### Functionality & MVP
 
@@ -63,18 +63,18 @@ Daniel's primary responsibility will be
 **Day 1**: Build out auth and start views
 - Backend Auth(Harvey)
 - Frontend Auth(Ryley)
-- Research Watson API(Daniel)
+- Research News API(Daniel)
 
 **Day 2**: Build Notes backend, implement Redux Cycle for note saving
 - Build backend for Notes(Harvey)
 - Build Redux cycle for Notes(Ryley)
 - Research Summarize algorithm and SMMRY API(Daniel)
 
-**Day 3**: Connect Frontend to Backend, begin styling and implement Watson API
+**Day 3**: Connect Frontend to Backend, begin styling and implement News API
 
 - Start connecting backend to firebase(Harvey)
 - Start Styling Views(Ryley)
-- Implement Watson API(Daniel)
+- Implement News API(Daniel)
 
 **Day 4**: Start Demo page, finish styling and incorporate SMMRY API
 
