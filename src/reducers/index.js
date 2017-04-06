@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './AuthReducer';
-import NotesReducer from './NotesReducer';
+import ArticlesReducer from './ArticlesReducer';
 
 export default combineReducers({
   auth: AuthReducer,
-  notes: NotesReducer
+  articles: ArticlesReducer
 });

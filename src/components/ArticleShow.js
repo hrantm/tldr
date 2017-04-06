@@ -2,14 +2,17 @@ import React from 'react';
 import { Text, ScrollView } from 'react-native';
 import { CardSection } from './common';
 
-class NoteShow extends React.Component {
+class ArticleShow extends React.Component {
 
   render () {
-    const { rawText } = this.props.note;
+    const { article } = this.props.article;
     return (
       <ScrollView>
         <Text style={styles.titleStyle}>
-          {rawText}
+          {article.title}
+        </Text>
+        <Text style={styles.titleStyle}>
+          {article.summary}
         </Text>
       </ScrollView>
     );
@@ -27,4 +30,4 @@ const styles = {
   }
 };
 
-export default NoteShow;
+export default ArticleShow;

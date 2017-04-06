@@ -3,13 +3,12 @@ import { ListView } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ListItem from './ListItem';
-import { fetchNotes } from '../actions';
+import { fetchArticles } from '../actions';
 
 
-class NotesIndex extends React.Component {
+class ArticleIndex extends React.Component {
 
   componentWillMount () {
-    this.props.fetchNotes();
     this.createDataSource(this.props);
   }
 
@@ -17,15 +16,15 @@ class NotesIndex extends React.Component {
     this.createDataSource(nextProps);
   }
 
-  createDataSource ({ notes }) {
+  createDataSource ({ articles }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
-    this.dataSource = ds.cloneWithRows(notes);
+    this.dataSource = ds.cloneWithRows(articles);
   }
 
-  renderRow (note) {
-    return <ListItem note={note} />;
+  renderRow (article) {
+    return <ListItem article={article} />;
   }
 
   render () {
@@ -40,10 +39,9 @@ class NotesIndex extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const notes = _.map(state.notes, (val, uid) => {
-    return { ...val, uid };
-  });
-  return { notes };
+  return {
+    articles: _.values(state.articles)
+  }
 };
 
-export default connect(mapStateToProps, { fetchNotes } )(NotesIndex);
+export default connect(mapStateToProps, { fetchArticles } )(ArticleIndex);
