@@ -10,32 +10,29 @@ import NoteShow from './components/NoteShow';
 
 const RouterComponent = () => {
   return (
-    <Router >
-    <Scene
-      key="auth">
+    <Router hideNavBar={true}>
+    <Scene key="auth">
       <Scene
         key='splash'
         component={Splash}
-        hideNavBar={true}/>
+
+        />
       <Scene
-        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
-        navigationBarStyle={ styles.navBar }
         key="login"
         component={LoginForm}
         direction='vertical'
-        title="Log in"/>
+        title="Log in"
+        />
       <Scene
-        sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         direction='vertical'
         key="signup"
         component={SignupForm}
-        title="Sign up"/>
+        title="Sign up"
+        />
     </Scene>
-    <Scene
-      key="main"
-      sceneStyle={ styles.loginHeaderStyle }>
+    <Scene key="main">
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
@@ -52,20 +49,27 @@ const RouterComponent = () => {
         hideNavBar={false}
         key="notesIndex"
         component={NotesIndex}
-        title="Notes" />
+        title="Notes"
+        onLeft={() => Actions.record()}
+        leftTitle="Record"
+        />
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="userShow"
         component={UserShow}
         direction='leftToRight'
-        title="Settings" />
+        title="Settings"
+        rightTitle="Record"
+        onRight={() => Actions.record()}
+        />
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="noteShow"
         component={NoteShow}
-        title="Note" />
+        title="Note"
+        />
     </Scene>
 
     </Router>
@@ -77,8 +81,7 @@ const styles = {
     paddingTop: 65
   },
   loginHeaderStyle: {
-    backgroundColor: 'black',
-    justifyContent: 'flex-start'
+    backgroundColor: 'rgba(203,79,131, 1)'
   }
 }
 

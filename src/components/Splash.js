@@ -35,7 +35,7 @@ const styles = {
     resizeMode: 'cover',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   logoViewStyle: {
     justifyContent: 'center',

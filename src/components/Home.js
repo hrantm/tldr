@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
 import { rawTextChanged, createNote } from '../actions';
 import { connect } from 'react-redux';
-import Recorder from './Recorder';
 
 class Home extends React.Component {
 
@@ -16,24 +15,24 @@ class Home extends React.Component {
   }
 
   render () {
+
     // <Recorder />
-
     return (
-        <Card>
-          <CardSection>
-            <Input
-              label="Text"
-              onChangeText={this.onTextChange.bind(this)}
-              value={this.props.rawText}
+      <Card>
+        <CardSection>
+          <Input
+            label="Text"
+            onChangeText={this.onTextChange.bind(this)}
+            value={this.props.rawText}
             />
-          </CardSection>
+        </CardSection>
 
-          <CardSection>
-            <Button onPress={this.onButtonPress.bind(this)}>
-              Enter Data
-            </Button>
-          </CardSection>
-        </Card>
+        <CardSection>
+          <Button onPress={this.onButtonPress.bind(this)}>
+            Enter Data
+          </Button>
+        </CardSection>
+      </Card>
     );
   }
 }
