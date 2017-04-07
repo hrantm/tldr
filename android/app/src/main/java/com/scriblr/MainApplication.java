@@ -3,6 +3,7 @@ package com.scriblr;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import net.no_mad.tts.TextToSpeechPackage;
 
 
 import com.zmxv.RNSound.RNSoundPackage;
