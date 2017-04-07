@@ -1,9 +1,11 @@
 import React from 'react';
-import { ListView } from 'react-native';
+import { ListView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ListItem from './ListItem';
 import { fetchArticles } from '../actions';
+
+import { Footer } from './common';
 
 
 class ArticleIndex extends React.Component {
@@ -11,7 +13,7 @@ class ArticleIndex extends React.Component {
   componentWillMount () {
     this.props.fetchArticles();
     console.log(this.props);
-    sorted = this.sortedArticles(this.props)
+    sorted = this.sortedArticles(this.props);
     this.createDataSource(sorted);
   }
 
@@ -39,11 +41,15 @@ class ArticleIndex extends React.Component {
 
   render () {
     return (
-      <ListView
-        enableEmptySections
-        dataSource={this.dataSource}
-        renderRow={this.renderRow}
-        />
+      <View>
+        <ListView
+          enableEmptySections
+          dataSource={this.dataSource}
+          renderRow={this.renderRow}
+          />
+        <Footer articles={this.props.articles}/>
+      </View>
+
     );
   }
 }
