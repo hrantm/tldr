@@ -5,10 +5,13 @@ import { getArticles } from '../util/articles_api_util'
 
 export const fetchArticles = () => dispatch => {
   getArticles()
-    .then( articles => dispatch(receiveArticles(articles)))
+    .then( articles => {
+      dispatch(receiveArticles(articles))
+      console.log(articles);
+    })
 };
 
-export const receiveArticles = () => ({
+export const receiveArticles = (allArticles) => ({
   type: RECEIVE_ARTICLES,
   allArticles
 });
