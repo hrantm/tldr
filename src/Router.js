@@ -7,6 +7,7 @@ import Splash from './components/Splash';
 import ArticleIndex from './components/ArticleIndex';
 import UserShow from './components/UserShow';
 import ArticleShow from './components/ArticleShow';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const RouterComponent = () => {
   return (
@@ -45,19 +46,20 @@ const RouterComponent = () => {
         renderBackButton={()=>null}
         component={ArticleIndex}
         title="Feed"
-        rightTitle="Settings"
+        rightButtonTextStyle={styles.titleStyle}
+        rightTitle={<Icon name="cog" size={25} />}
         onRight={() =>  Actions.userShow()}
         />
       <Scene
-        navigationBarStyle={styles.newHeaderStyle}
-        sceneStyle={ styles.bannerStyle }
+        navigationBarStyle={styles.headerBackgroundStyle}
         titleStyle={styles.titleStyle}
         hideNavBar={false}
         key="userShow"
         renderBackButton={()=>null}
         component={UserShow}
+        rightButtonTextStyle={styles.titleStyle}
         title="Settings"
-        rightTitle="Articles"
+        rightTitle={<Icon name="th-large" size={25} />}
         onRight={() => Actions.articleFeed()}
         />
       <Scene
@@ -80,13 +82,13 @@ const styles = {
     paddingTop: 65
   },
   loginHeaderStyle: {
-    backgroundColor: 'rgba(203,79,131, 1)'
+    backgroundColor: 'rgba(203,79,131, 1)',
+    borderBottomWidth: 0,
+    borderBottomColor: 'transparent',
   },
   headerBackgroundStyle: {
     backgroundColor:'transparent',
     borderBottomWidth: 0,
-    borderBottomLeftRadius: 1,
-    borderBottomRightRadius: 1,
     borderBottomColor: 'transparent',
   },
   newHeaderStyle: {
