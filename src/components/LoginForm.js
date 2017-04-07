@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Image } from 'react-native';
+import { Text, Image, View } from 'react-native';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 
@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
       return <Spinner />;
     } else {
       return (
-        <Button onPress={this.onButtonPress.bind(this)}>
+        <Button onPress={this.onButtonPress.bind(this)} style={styles.buttonStyle}>
           Login
         </Button>
       );
@@ -35,32 +35,26 @@ class LoginForm extends React.Component {
   render () {
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
-        <CardSection>
+        <View style={styles.contentStyle}>
           <Input
-            label="Email"
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange.bind(this)}
             value={this.props.email}
           />
-        </CardSection>
 
-        <CardSection>
           <Input
             secureTextEntry
             placeholder="password"
-            label="Password"
             onChangeText={this.onPasswordChange.bind(this)}
             value={this.props.password} />
-        </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
 
-        <CardSection>
-          {this.renderButton()}
-        </CardSection>
+            {this.renderButton()}
 
+        </View>
       </Image>
     );
   }
@@ -80,6 +74,13 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  contentStyle: {
+    width: 300,
+    height: 170,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center'
   }
 };
 
