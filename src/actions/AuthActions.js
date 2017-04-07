@@ -4,7 +4,8 @@ import { EMAIL_CHANGED,
          PASSWORD_CHANGED,
          LOGIN_USER_SUCCESS,
          LOGIN_USER_FAIL,
-         LOGIN_USER } from './types';
+         LOGIN_USER,
+         LOGOUT_USER} from './types';
 
 export const emailChanged = (text) => {
   return {
@@ -19,6 +20,12 @@ export const passwordChanged = (text) => {
     text
   };
 };
+
+const removeUser = () => {
+  return {
+    type: LOGOUT_USER
+  }
+}
 
 export const loginUser = (email, password) => {
   return (dispatch) => {
@@ -37,6 +44,14 @@ export const signupUser = (email, password) => {
         .catch((err) => loginUserFail(dispatch, err));
   };
 };
+
+export const logoutUser = () => dispatch => {
+    firebase.auth().signOut()
+      .then(() => {
+        dispatch(removeUser())
+        Actions.splash()
+      })
+}
 
 const loginUserFail = (dispatch, err) => (
   dispatch({type: LOGIN_USER_FAIL, err})
