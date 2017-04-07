@@ -12,6 +12,7 @@ const RouterComponent = () => {
   return (
     <Router
       navigationBarStyle={styles.headerBackgroundStyle}
+      titleStyle={styles.titleStyle}
       hideNavBar={true}>
     <Scene key="auth">
       <Scene
@@ -36,6 +37,8 @@ const RouterComponent = () => {
     </Scene>
     <Scene key="main">
       <Scene
+        navigationBarStyle={styles.newHeaderStyle}
+        titleStyle={styles.titleStyle}
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="articleFeed"
@@ -46,7 +49,9 @@ const RouterComponent = () => {
         onRight={() =>  Actions.userShow()}
         />
       <Scene
+        navigationBarStyle={styles.newHeaderStyle}
         sceneStyle={ styles.bannerStyle }
+        titleStyle={styles.titleStyle}
         hideNavBar={false}
         key="userShow"
         renderBackButton={()=>null}
@@ -56,7 +61,9 @@ const RouterComponent = () => {
         onRight={() => Actions.articleFeed()}
         />
       <Scene
+        navigationBarStyle={styles.newHeaderStyle}
         sceneStyle={ styles.bannerStyle }
+        titleStyle={styles.titleStyle}
         hideNavBar={false}
         key="articleShow"
         component={ArticleShow}
@@ -76,12 +83,23 @@ const styles = {
     backgroundColor: 'rgba(203,79,131, 1)'
   },
   headerBackgroundStyle: {
-    backgroundColor:'#D65786',
+    backgroundColor:'transparent',
     borderBottomWidth: 0,
     borderBottomLeftRadius: 1,
     borderBottomRightRadius: 1,
     borderBottomColor: 'transparent',
+  },
+  newHeaderStyle: {
+    backgroundColor:'#2ac8ff',
+    borderBottomWidth: 0,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+    borderBottomColor: 'transparent',
+  },
+  titleStyle: {
+    color: '#fff'
   }
+
 }
 
 export default RouterComponent;
