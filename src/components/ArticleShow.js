@@ -68,8 +68,6 @@ class ArticleShow extends React.Component {
     const output = this.flatten(finalSentences)
 
     const realOutput = output.map( el => {
-      console.log(el.slice(-2));
-      console.log(el.slice(-2) !== `. `);
       if(el.slice(-2) !== `. `) {
         return el.concat(`." `)
       }
