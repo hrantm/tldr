@@ -9,14 +9,24 @@ import { fetchArticles } from '../actions';
 class ArticleIndex extends React.Component {
 
   componentWillMount () {
-    this.createDataSource(this.props);
+    this.props.fetchArticles();
+    console.log(this.props);
+    sorted = this.sortedArticles(this.props)
+    this.createDataSource(sorted);
   }
 
   componentWillReceiveProps (nextProps) {
-    this.createDataSource(nextProps);
+    sorted = this.sortedArticles(nextProps)
+    this.createDataSource(sorted);
   }
 
-  createDataSource ({ articles }) {
+  sortedArticles ({articles}) {
+    return (articles.sort((a, b) => {
+      return a.age - b.age
+    }))
+  }
+
+  createDataSource (articles) {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
@@ -40,7 +50,7 @@ class ArticleIndex extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    articles: _.values(state.articles)
+    articles: _.values(state.articles.data)
   }
 };
 

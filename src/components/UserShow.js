@@ -1,9 +1,15 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Button, CardSection } from './common';
 import firebase from 'firebase';
 
 class UserShow extends React.Component {
+
+  componentWillMount () {
+    Actions.userShow({type: 'reset'})
+  };
+
   render () {
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>

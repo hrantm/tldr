@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigator } from 'react-native';
 import { Scene, Router, Actions, ActionConst } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -39,16 +40,18 @@ const RouterComponent = () => {
         component={ArticleIndex}
         title="Feed"
         leftTitle="Settings"
-        onLeft={() => Actions.userShow()}
+        onLeft={() =>  Actions.userShow()}
         />
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="userShow"
+        renderBackButton={()=>null}
+        sceneConfig={ Navigator.SceneConfigs.FloatFromRight }
         component={UserShow}
         direction='leftToRight'
         title="Settings"
-        rightTitle="Record"
+        rightTitle="Articles"
         onRight={() => Actions.articleFeed()}
         />
       <Scene
@@ -56,7 +59,7 @@ const RouterComponent = () => {
         hideNavBar={false}
         key="articleShow"
         component={ArticleShow}
-        title="Note"
+        title="Article"
         />
     </Scene>
 

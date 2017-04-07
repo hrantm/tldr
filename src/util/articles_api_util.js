@@ -1,7 +1,8 @@
-export const getPhotos = () => {
-  return $.ajax({
+import axios from 'axios'
+
+export const getArticles = () => {
+  return axios({
     method: "GET",
-    url: `api/articles`,
-    data: {  }
+    url: `https://news-backend-123.herokuapp.com/api/articles/`
   });
 };
