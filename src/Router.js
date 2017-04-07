@@ -10,7 +10,9 @@ import ArticleShow from './components/ArticleShow';
 
 const RouterComponent = () => {
   return (
-    <Router hideNavBar={true}>
+    <Router
+      navigationBarStyle={styles.headerBackgroundStyle}
+      hideNavBar={true}>
     <Scene key="auth">
       <Scene
         key='splash'
@@ -37,19 +39,18 @@ const RouterComponent = () => {
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="articleFeed"
+        renderBackButton={()=>null}
         component={ArticleIndex}
         title="Feed"
-        leftTitle="Settings"
-        onLeft={() =>  Actions.userShow()}
+        rightTitle="Settings"
+        onRight={() =>  Actions.userShow()}
         />
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="userShow"
         renderBackButton={()=>null}
-        sceneConfig={ Navigator.SceneConfigs.FloatFromRight }
         component={UserShow}
-        direction='leftToRight'
         title="Settings"
         rightTitle="Articles"
         onRight={() => Actions.articleFeed()}
@@ -73,6 +74,13 @@ const styles = {
   },
   loginHeaderStyle: {
     backgroundColor: 'rgba(203,79,131, 1)'
+  },
+  headerBackgroundStyle: {
+    backgroundColor:'#D65786',
+    borderBottomWidth: 0,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+    borderBottomColor: 'transparent',
   }
 }
 

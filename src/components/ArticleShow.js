@@ -47,7 +47,7 @@ const styles = {
     color: '#2a2a2a'
   },
   thumbnailStyle: {
-    height: 300,
+    height: 200,
     flex: 1,
     width: null,
   },
