@@ -1,8 +1,13 @@
 import React from 'react';
-import { Text, ScrollView, Image } from 'react-native';
+import { Text, ScrollView, Image, TouchableHighlight } from 'react-native';
 import { CardSection } from './common';
+import Tts from 'react-native-tts';
 
 class ArticleShow extends React.Component {
+
+  playArticle () {
+    Tts.speak(this.props.article.smmry);
+  }
 
   render () {
     const { article } = this.props;
@@ -13,6 +18,10 @@ class ArticleShow extends React.Component {
             {article.title}
           </Text>
         </CardSection>
+
+        <TouchableHighlight onPress={this.playArticle.bind(this)}>
+          <Text>play!</Text>
+        </TouchableHighlight>
 
         <CardSection style={ styles.thumbnailContainerStyle}>
           <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
