@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navigator } from 'react-native';
 import { Scene, Router, Actions, ActionConst } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -9,7 +10,9 @@ import ArticleShow from './components/ArticleShow';
 
 const RouterComponent = () => {
   return (
-    <Router hideNavBar={true}>
+    <Router
+      navigationBarStyle={styles.headerBackgroundStyle}
+      hideNavBar={true}>
     <Scene key="auth">
       <Scene
         key='splash'
@@ -36,19 +39,20 @@ const RouterComponent = () => {
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="articleFeed"
+        renderBackButton={()=>null}
         component={ArticleIndex}
         title="Feed"
-        leftTitle="Settings"
-        onLeft={() => Actions.userShow()}
+        rightTitle="Settings"
+        onRight={() =>  Actions.userShow()}
         />
       <Scene
         sceneStyle={ styles.bannerStyle }
         hideNavBar={false}
         key="userShow"
+        renderBackButton={()=>null}
         component={UserShow}
-        direction='leftToRight'
         title="Settings"
-        rightTitle="Record"
+        rightTitle="Articles"
         onRight={() => Actions.articleFeed()}
         />
       <Scene
@@ -56,7 +60,7 @@ const RouterComponent = () => {
         hideNavBar={false}
         key="articleShow"
         component={ArticleShow}
-        title="Note"
+        title="Article"
         />
     </Scene>
 
@@ -70,6 +74,13 @@ const styles = {
   },
   loginHeaderStyle: {
     backgroundColor: 'rgba(203,79,131, 1)'
+  },
+  headerBackgroundStyle: {
+    backgroundColor:'#D65786',
+    borderBottomWidth: 0,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+    borderBottomColor: 'transparent',
   }
 }
 
