@@ -18,6 +18,7 @@ const RouterComponent = () => {
     <Scene key="auth">
       <Scene
         key='splash'
+        type={ActionConst.RESET}
         component={Splash}
 
         />

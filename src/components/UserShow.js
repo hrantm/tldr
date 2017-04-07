@@ -1,8 +1,10 @@
 import React from 'react';
-import { Image, Text } from 'react-native';
+import firebase from 'firebase';
+import { connect } from 'react-redux';
+import { Image, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection } from './common';
-import firebase from 'firebase';
+import { logoutUser } from '../actions';
 
 class UserShow extends React.Component {
 
@@ -11,6 +13,7 @@ class UserShow extends React.Component {
   };
 
   render () {
+    console.log(this.props);
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
         <View>
@@ -21,12 +24,23 @@ class UserShow extends React.Component {
         <Text>TLDV (Too Long Didn't View) is a mobile news feed application made with react-native in 1 week. </Text>
         <CardSection>
           <Button
-            onPress={() => Action.splash()}>
+            onPress={() => this.props.logoutUser()}>
             Logout
           </Button>
         </CardSection>
       </Image>
     );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    logoutUser: () => dispatch(logoutUser())
   }
 }
 
@@ -42,4 +56,4 @@ const styles = {
   }
 }
 
-export default UserShow;
+export default connect(null, mapDispatchToProps)(UserShow);
