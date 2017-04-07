@@ -8,6 +8,10 @@ class Splash extends React.Component {
     return(
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
 
+        <Image
+          source={require('../assets/logo.png')}
+          style={styles.logoStyle}/>
+
         <CardSection style={ styles.buttonViewStyle} >
             <Button
               styles={ styles.buttonStyle }
