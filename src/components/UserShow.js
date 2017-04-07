@@ -13,13 +13,15 @@ class UserShow extends React.Component {
   render () {
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
-        <Text>Email:</Text>
-        <Text>{firebase.auth().currentUser.email}</Text>
+        <View>
+          <Text>Email:</Text>
+          <Text>{firebase.auth().currentUser.email}</Text>
+        </View>
         <Text>About:</Text>
         <Text>TLDV (Too Long Didn't View) is a mobile news feed application made with react-native in 1 week. </Text>
         <CardSection>
           <Button
-            onPress={() => console.log("logout")}>
+            onPress={() => Action.splash()}>
             Logout
           </Button>
         </CardSection>
