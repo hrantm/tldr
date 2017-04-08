@@ -21,7 +21,7 @@ class UserShow extends React.Component {
         <Text>TLDV (Too Long Didn't View) is a mobile news feed application made with react-native in 1 week. </Text>
         <CardSection>
           <Button
-            onPress={() => Action.splash()}>
+            onPress={() => Actions.splash()}>
             Logout
           </Button>
         </CardSection>
