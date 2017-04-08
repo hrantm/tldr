@@ -1,11 +1,13 @@
 import React from 'react';
 import { Text,
+         View,
          ScrollView,
          Image,
          TouchableWithoutFeedback } from 'react-native';
-import { CardSection } from './common';
+import { CardSection, Footer } from './common';
 import Tts from 'react-native-tts';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 class ArticleShow extends React.Component {
 
@@ -25,31 +27,6 @@ class ArticleShow extends React.Component {
       }
     })
     return flattened
-  }
-
-  playArticle () {
-    if (this.state.speaking) {
-      this.stopArticle();
-    } else {
-      Tts.speak(this.props.article.smmry);
-    }
-    this.setState({speaking: !this.state.speaking});
-  }
-
-  stopArticle() {
-    Tts.stop();
-  }
-
-  renderIcon () {
-    if (this.state.speaking) {
-      return <Icon name="pause" size={15} />;
-    } else {
-      return <Icon name="play" size={15} />;
-    }
-  }
-
-  componentWillUnmount() {
-    this.stopArticle();
   }
 
   render () {
@@ -74,27 +51,26 @@ class ArticleShow extends React.Component {
       return el
     })
     return (
-      <ScrollView>
-        <CardSection>
-          <Text style={styles.titleStyle}>
-            {article.title}
-          </Text>
-        </CardSection>
+      <View>
+        <ScrollView>
+          <CardSection>
+            <Text style={styles.titleStyle}>
+              {article.title}
+            </Text>
+          </CardSection>
 
-        <TouchableWithoutFeedback onPress={this.playArticle.bind(this)}>
-          {this.renderIcon()}
-        </TouchableWithoutFeedback>
+          <CardSection style={ styles.thumbnailContainerStyle}>
+            <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
+          </CardSection>
 
-        <CardSection style={ styles.thumbnailContainerStyle}>
-          <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
-        </CardSection>
-
-        {realOutput.map((sentence, idx) => {
-          return (
-            <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
-          )
-        })}
-      </ScrollView>
+          {realOutput.map((sentence, idx) => {
+            return (
+              <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
+            )
+          })}
+        </ScrollView>
+        <Footer articles={this.props.articles}/>
+      </View>
     );
   }
 }

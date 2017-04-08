@@ -14,13 +14,13 @@ const RouterComponent = () => {
     <Router
       navigationBarStyle={styles.headerBackgroundStyle}
       titleStyle={styles.titleStyle}
-      hideNavBar={true}>
+      hideNavBar={true}
+      >
     <Scene key="auth">
       <Scene
         key='splash'
         component={Splash}
         type={ActionConst.REPLACE}
-
         />
       <Scene
         hideNavBar={false}
