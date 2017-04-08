@@ -10,11 +10,24 @@ import { logoutUser, fetchExcludes, updateExcludes } from '../actions';
 class UserShow extends React.Component {
   constructor(props) {
     super(props)
+    this.toggle = this.toggle.bind(this)
 
-    this.state = {
-      excludes: this.props.excludes
+    this.state = this.props.excludes
+  }
+
+  toggle(field) {
+    return () => {
+      this.setState({[field]: !this.state[field]})
     }
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("unmounting");
+    if(this.state !== prevState) {
+      this.props.updateExcludes(this.state);
+    }
+  }
+
 
   componentWillMount () {
     Actions.userShow({type: 'reset'});
@@ -22,12 +35,11 @@ class UserShow extends React.Component {
   };
 
   render () {
-    console.log(this.props);
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
 
         <View style={styles.contentStyle}>
-          <View >
+          <View style={styles.contentBackgroundStyle} >
             <Text
               style={styles.titleStyle}>
               Email:</Text>
@@ -36,7 +48,9 @@ class UserShow extends React.Component {
               {firebase.auth().currentUser.email}</Text>
           </View>
 
-          <View style={{paddingTop: 10, paddingBottom: 10}}>
+          <View
+            style={{padding: 5, margin: 5}}
+            style={ styles.contentBackgroundStyle}>
             <Text
               style={styles.titleStyle}
               >Categories:</Text>
@@ -48,12 +62,11 @@ class UserShow extends React.Component {
                   labelBefore={true}
                   labelStyle={styles.labelStyle}
                   label="Sports"
-                  checked={true}
+                  checked={this.state.sports}
                   checkedImage={require('../assets/enabled.png')}
                   uncheckedImage={require('../assets/disabled.png')}
-                  onChange={(checked)=> {
-                    console.log("hi", checked)
-                  }}/>
+                  onChange={ this.toggle('sports') }
+                  />
               </View>
               <View>
                 <CheckBox
@@ -62,12 +75,11 @@ class UserShow extends React.Component {
                   labelBefore={true}
                   labelStyle={styles.labelStyle}
                   label="Politics"
-                  checked={true}
+                  checked={this.state.politics}
                   checkedImage={require('../assets/enabled.png')}
                   uncheckedImage={require('../assets/disabled.png')}
-                  onChange={(checked)=> {
-                    console.log("hi", checked)
-                  }}/>
+                  onChange={this.toggle('politics')}
+                  />
               </View>
               <View>
                 <CheckBox
@@ -76,12 +88,11 @@ class UserShow extends React.Component {
                   labelBefore={true}
                   labelStyle={styles.labelStyle}
                   label="Entertainment"
-                  checked={true}
+                  checked={this.state.entertainment}
                   checkedImage={require('../assets/enabled.png')}
                   uncheckedImage={require('../assets/disabled.png')}
-                  onChange={(checked)=> {
-                    console.log("hi", checked)
-                  }}/>
+                  onChange={this.toggle('entertainment')}
+                  />
               </View>
               <View>
                 <CheckBox
@@ -90,12 +101,11 @@ class UserShow extends React.Component {
                   labelBefore={true}
                   labelStyle={styles.labelStyle}
                   label="Tech"
-                  checked={true}
+                  checked={this.state.tech}
                   checkedImage={require('../assets/enabled.png')}
                   uncheckedImage={require('../assets/disabled.png')}
-                  onChange={(checked)=> {
-                    console.log("hi", checked)
-                  }}/>
+                  onChange={this.toggle('tech')}
+                  />
               </View>
               <View>
                 <CheckBox
@@ -104,18 +114,19 @@ class UserShow extends React.Component {
                   labelBefore={true}
                   labelStyle={styles.labelStyle}
                   label="Business"
-                  checked={true}
+                  checked={this.state.business}
                   checkedImage={require('../assets/enabled.png')}
                   uncheckedImage={require('../assets/disabled.png')}
-                  onChange={(checked)=> {
-                    console.log("hi", checked)
-                  }}/>
+                  onChange={this.toggle('business')}
+                  />
               </View>
             </View>
           </View>
 
-          <Text style={styles.titleStyle}>About:</Text>
-          <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. If even the summaries are too long, tldr uses Google Text-To-Speech to play summarized articles to users.</Text>
+          <View style={styles.contentBackgroundStyle}>
+            <Text style={styles.titleStyle}>About:</Text>
+            <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. If even the summaries are too long, tldr uses Google Text-To-Speech to play summarized articles to users.</Text>
+          </View>
         </View>
         <CardSection
           style={styles.buttonStyle}>
@@ -138,7 +149,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logoutUser: () => dispatch(logoutUser()),
     fetchExcludes: () => dispatch(fetchExcludes()),
-    updateExcludes: () => dispatch(updateExcludes())
+    updateExcludes: excludes => dispatch(updateExcludes(excludes))
   }
 }
 
@@ -165,6 +176,12 @@ const styles = {
     justifyContent: 'flex-start',
     height: 475,
     backgroundColor: 'transparent'
+  },
+  contentBackgroundStyle: {
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    borderRadius: 3,
+    margin: 5,
+    paddingBottom: 5
   },
   bodyStyle: {
     fontSize: 15,
