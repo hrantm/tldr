@@ -49,7 +49,7 @@ export const logoutUser = () => dispatch => {
     firebase.auth().signOut()
       .then(() => {
         dispatch(removeUser())
-        Actions.splash()
+        Actions.auth()
       })
 }
 
