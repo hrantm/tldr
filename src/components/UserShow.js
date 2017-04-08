@@ -8,6 +8,26 @@ import { Button, CardSection } from './common';
 import { logoutUser, fetchExcludes, updateExcludes } from '../actions';
 
 class UserShow extends React.Component {
+  constructor(props) {
+    super(props)
+    this.toggle = this.toggle.bind(this)
+
+    this.state = this.props.excludes
+  }
+
+  toggle(field) {
+    return () => {
+      this.setState({[field]: !this.state[field]})
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("unmounting");
+    if(this.state !== prevState) {
+      this.props.updateExcludes(this.state);
+    }
+  }
+
 
   componentWillMount () {
     Actions.userShow({type: 'reset'});
@@ -15,12 +35,11 @@ class UserShow extends React.Component {
   };
 
   render () {
-    console.log(this.props);
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
 
         <View style={styles.contentStyle}>
-          <View >
+          <View style={styles.contentBackgroundStyle} >
             <Text
               style={styles.titleStyle}>
               Email:</Text>
@@ -29,7 +48,9 @@ class UserShow extends React.Component {
               {firebase.auth().currentUser.email}</Text>
           </View>
 
-          <View >
+          <View
+            style={{padding: 5, margin: 5}}
+            style={ styles.contentBackgroundStyle}>
             <Text
               style={styles.titleStyle}
               >Categories:</Text>
@@ -39,56 +60,73 @@ class UserShow extends React.Component {
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Sports"
-                  checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checked={this.state.sports}
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={ this.toggle('sports') }
+                  />
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Politics"
-                  checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checked={this.state.politics}
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={this.toggle('politics')}
+                  />
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Entertainment"
-                  checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checked={this.state.entertainment}
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={this.toggle('entertainment')}
+                  />
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Tech"
-                  checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checked={this.state.tech}
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={this.toggle('tech')}
+                  />
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Business"
-                  checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checked={this.state.business}
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={this.toggle('business')}
+                  />
               </View>
             </View>
           </View>
 
-          <Text style={styles.titleStyle}>About:</Text>
-          <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. If even the summaries are too long, tldr uses Google Text-To-Speech to play summarized articles to users.</Text>
+          <View style={styles.contentBackgroundStyle}>
+            <Text style={styles.titleStyle}>About:</Text>
+            <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. If even the summaries are too long, tldr uses Google Text-To-Speech to play summarized articles to users.</Text>
+          </View>
         </View>
         <CardSection
           style={styles.buttonStyle}>
@@ -111,7 +149,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logoutUser: () => dispatch(logoutUser()),
     fetchExcludes: () => dispatch(fetchExcludes()),
-    updateExcludes: () => dispatch(updateExcludes())
+    updateExcludes: excludes => dispatch(updateExcludes(excludes))
   }
 }
 
@@ -136,13 +174,26 @@ const styles = {
     },
   contentStyle: {
     justifyContent: 'flex-start',
-    height: 400,
+    height: 475,
     backgroundColor: 'transparent'
+  },
+  contentBackgroundStyle: {
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    borderRadius: 3,
+    margin: 5,
+    paddingBottom: 5
   },
   bodyStyle: {
     fontSize: 15,
+    paddingLeft: 25,
+    paddingRight: 20,
+    paddingTop: 10,
+    color: '#fff'
+  },
+  labelStyle: {
+    fontSize: 15,
     paddingLeft: 15,
-    paddingRight: 15,
+    paddingRight: 20,
     paddingTop: 10,
     color: '#fff'
   },
@@ -153,7 +204,8 @@ const styles = {
   checkContainerStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingRight: 20
+    paddingRight: 20,
+    paddingBottom: 5
   },
   checkStyle: {
     color: '#fff'

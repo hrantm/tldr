@@ -3,7 +3,8 @@ import { Text,
          View,
          ScrollView,
          Image,
-         TouchableOpacity } from 'react-native';
+         TouchableOpacity,
+         Linking} from 'react-native';
 import { connect } from 'react-redux';
 import { CardSection, Footer } from './common';
 import Tts from 'react-native-tts';
@@ -33,6 +34,10 @@ class ArticleShow extends React.Component {
   playArticle() {
     console.log('press play article button');
     this.props.playCurrentArticle(this.props.article);
+  }
+
+  openUrl () {
+    Linking.openURL(this.props.article.url);
   }
 
   render () {
@@ -76,7 +81,11 @@ class ArticleShow extends React.Component {
               <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
             )
           })}
+          <TouchableOpacity onPress={this.openUrl.bind(this)}>
+            <Text style={styles.showMoreStyle}>Show more</Text>
+          </TouchableOpacity>
         </ScrollView>
+
       </View>
     );
   }
@@ -109,6 +118,12 @@ const styles = {
     alignItems: 'center',
     marginLeft: 10,
     marginRight: 10
+  },
+  showMoreStyle: {
+    paddingLeft: 15,
+    color: '#0000EE',
+    textDecorationLine: 'underline',
+    marginTop: 5
   }
 };
 
