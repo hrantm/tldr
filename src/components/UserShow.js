@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { Image, Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Button, CardSection } from './common';
-import { logoutUser } from '../actions';
+import { logoutUser, fetchExcludes } from '../actions';
 
 class UserShow extends React.Component {
 
   componentWillMount () {
-    Actions.userShow({type: 'reset'})
+    Actions.userShow({type: 'reset'});
+    this.props.fetchExcludes();
   };
 
   render () {
@@ -35,12 +36,13 @@ class UserShow extends React.Component {
 
 const mapStateToProps = state => {
   return {
-
+    excludes: state.excludes
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    logoutUser: () => dispatch(logoutUser())
+    logoutUser: () => dispatch(logoutUser()),
+    fetchExcludes: () => dispatch(fetchExcludes())
   }
 }
 
@@ -56,4 +58,4 @@ const styles = {
   }
 }
 
-export default connect(null, mapDispatchToProps)(UserShow);
+export default connect(mapStateToProps, mapDispatchToProps)(UserShow);
