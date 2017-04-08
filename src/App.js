@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
+import Router from './Router';
 import ReduxThunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
@@ -26,12 +27,14 @@ class App extends React.Component {
   }
 
   render () {
-
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     console.log('app is rendering');
     return (
       <Provider store={store}>
-        <Root store={store}/>
+        <View style={{flex: 1}}>
+          <Router />
+          <Root store={store}/>
+        </View>
       </Provider>
     );
   }
