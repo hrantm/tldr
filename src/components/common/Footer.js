@@ -12,6 +12,8 @@ class Footer extends React.Component {
       currentArticle: 0 };
     Tts.addEventListener('tts-finish', () => this.nextArticle());
     this.playArticle = this.playArticle.bind(this);
+    this.nextArticle = this.nextArticle.bind(this);
+    this.lastArticle = this.lastArticle.bind(this);
   }
 
   nextArticle () {
@@ -31,9 +33,11 @@ class Footer extends React.Component {
   }
 
   playArticle () {
+    console.log('playing', this.state.speaking, this.state.currentArticle);
     if (this.state.speaking === 'stopped') {
       const article = this.props.articles[this.state.currentArticle];
       const speech = `Next article: ${article.title}. ${article.smmry}`;
+      console.log('speaking about', article.title);
       Tts.speak(speech);
       this.setState({speaking: 'playing'});
     } else if (this.state.speaking === 'playing') {

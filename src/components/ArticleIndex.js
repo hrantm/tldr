@@ -15,6 +15,7 @@ class ArticleIndex extends React.Component {
     console.log(this.props);
     sorted = this.sortedArticles(this.props);
     this.createDataSource(sorted);
+    this.renderRow = this.renderRow.bind(this);
   }
 
   componentWillReceiveProps (nextProps) {
@@ -36,7 +37,7 @@ class ArticleIndex extends React.Component {
   }
 
   renderRow (article) {
-    return <ListItem article={article} />;
+    return <ListItem article={article} articles={this.props.articles} />;
   }
 
   render () {
