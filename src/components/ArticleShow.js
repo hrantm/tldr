@@ -3,7 +3,9 @@ import { Text,
          View,
          ScrollView,
          Image,
-         TouchableWithoutFeedback } from 'react-native';
+         TouchableWithoutFeedback,
+         TouchableOpacity,
+         Linking } from 'react-native';
 import { CardSection, Footer } from './common';
 import Tts from 'react-native-tts';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -27,6 +29,10 @@ class ArticleShow extends React.Component {
       }
     })
     return flattened
+  }
+
+  openUrl () {
+    Linking.openURL(this.props.article.url);
   }
 
   render () {
@@ -67,7 +73,11 @@ class ArticleShow extends React.Component {
               <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
             )
           })}
+          <TouchableOpacity onPress={this.openUrl.bind(this)}>
+            <Text style={styles.showMoreStyle}>Show more</Text>
+          </TouchableOpacity>
         </ScrollView>
+
       </View>
     );
   }
@@ -100,6 +110,12 @@ const styles = {
     alignItems: 'center',
     marginLeft: 10,
     marginRight: 10
+  },
+  showMoreStyle: {
+    paddingLeft: 15,
+    color: '#0000EE',
+    textDecorationLine: 'underline',
+    marginTop: 5
   }
 };
 
