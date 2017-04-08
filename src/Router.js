@@ -8,7 +8,6 @@ import ArticleIndex from './components/ArticleIndex';
 import UserShow from './components/UserShow';
 import ArticleShow from './components/ArticleShow';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Footer } from './components/common';
 
 const RouterComponent = () => {
   return (
@@ -103,7 +102,6 @@ const styles = {
   titleStyle: {
     color: '#fff'
   }
-
-}
+};
 
 export default RouterComponent;

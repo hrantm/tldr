@@ -6,3 +6,4 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES';
 export const RECEIVE_EXCLUDES = 'RECEIVE_EXCLUDES';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const PLAY_ARTICLE = 'PLAY_ARTICLE';

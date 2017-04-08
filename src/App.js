@@ -28,7 +28,6 @@ class App extends React.Component {
 
   render () {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
-    console.log('app is rendering');
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
