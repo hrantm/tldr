@@ -10,16 +10,17 @@ class Root extends React.Component {
 
   renderFooter () {
     if (this.props.user) {
-      return (<Footer articles={this.props.articles}/>);
-    } else {
-      return (<View></View>);
+      return (
+        <View style={{flex: 1}}>
+          <Footer articles={this.props.articles}/>
+        </View>
+      );
     }
   }
 
   render () {
     return (
-      <View style={{flex: 1}}>
-        <Router />
+      <View>
         {this.renderFooter()}
       </View>
     );

@@ -44,7 +44,7 @@ class ArticleIndex extends React.Component {
     return (
       <View>
         <ListView
-          style={{marginBottom: 50}}
+          style={{marginBottom: 48}}
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}

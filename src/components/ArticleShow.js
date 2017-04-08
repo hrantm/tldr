@@ -51,7 +51,7 @@ class ArticleShow extends React.Component {
       return el
     })
     return (
-      <View>
+      <View style={{marginBottom: 48}}>
         <ScrollView>
           <CardSection>
             <Text style={styles.titleStyle}>
