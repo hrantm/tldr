@@ -21,6 +21,7 @@ const RouterComponent = () => {
       <Scene
         key='splash'
         component={Splash}
+        type={ActionConst.REPLACE}
         />
       <Scene
         hideNavBar={false}

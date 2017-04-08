@@ -11,3 +11,10 @@
 - switching to android no avail
 
 - decided to change speech to text to an new aggregation website
+
+
+
+
+-slack channel,
+pair programming,
+flex project
