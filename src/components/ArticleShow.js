@@ -4,6 +4,7 @@ import { Text,
          ScrollView,
          Image,
          TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import { CardSection, Footer } from './common';
 import Tts from 'react-native-tts';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -30,7 +31,8 @@ class ArticleShow extends React.Component {
   }
 
   playArticle() {
-
+    console.log('press play article button');
+    this.props.playCurrentArticle(this.props.article);
   }
 
   render () {
@@ -114,4 +116,4 @@ const mapDispatchToProps = dispatch => ({
   playCurrentArticle: (article) => dispatch(playCurrentArticle(article))
 });
 
-export default ArticleShow;
+export default connect(null, mapDispatchToProps)(ArticleShow);
