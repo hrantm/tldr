@@ -7,7 +7,6 @@ export const fetchArticles = () => dispatch => {
   getArticles()
     .then( articles => {
       dispatch(receiveArticles(articles))
-      console.log(articles);
     })
 };
 

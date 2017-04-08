@@ -12,7 +12,6 @@ class ArticleIndex extends React.Component {
 
   componentWillMount () {
     this.props.fetchArticles();
-    console.log(this.props);
     sorted = this.sortedArticles(this.props);
     this.createDataSource(sorted);
     this.renderRow = this.renderRow.bind(this);
