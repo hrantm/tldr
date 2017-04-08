@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Router from '../Router';
-import { Footer } from './common';
+import Footer from './Footer';
 import _ from 'lodash';
 
 import { connect } from 'react-redux';

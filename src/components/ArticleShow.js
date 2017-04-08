@@ -3,54 +3,61 @@ import { Text,
          View,
          ScrollView,
          Image,
-         TouchableWithoutFeedback } from 'react-native';
+         TouchableOpacity } from 'react-native';
 import { CardSection, Footer } from './common';
 import Tts from 'react-native-tts';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { playCurrentArticle } from '../actions';
 
 
 class ArticleShow extends React.Component {
 
   constructor () {
     super();
-    this.state = {speaking: false};
   }
 
   flatten(arr) {
-    const flattened = []
+    const flattened = [];
 
     arr.forEach( el => {
       if (Array.isArray(el)) {
         el.forEach(sent => {
-          flattened.push(sent)
-        })
+          flattened.push(sent);
+        });
       }
-    })
-    return flattened
+    });
+    return flattened;
+  }
+
+  playArticle() {
+
   }
 
   render () {
     const { article } = this.props;
-    const sentences = article.smmry.split(". ").map((el, idx)=> {
-                                                      if(idx !== article.smmry.split('. ').length - 1){
-                                                        return el.concat('. ')
-                                                      }
-                                                      return el.concat(" ")
-                                                    })
+    const sentences = article.smmry.split(". ")
+      .map((el, idx)=> {
+        if(idx !== article.smmry.split('. ').length - 1){
+          return el.concat('. ');
+        }
+        return el.concat(" ");
+      });
 
-    const finalSentences = sentences.map(sentence => {
-      return sentence.split(`." `)
-    })
-    const output = this.flatten(finalSentences)
+    const finalSentences = sentences.map(sentence => sentence.split(`." `));
+    const output = this.flatten(finalSentences);
 
     const realOutput = output.map( el => {
       if(el.slice(-2) !== `. `) {
-        return el.concat(`." `)
+        return el.concat(`." `);
       }
-      return el
-    })
+      return el;
+    });
+
     return (
       <View style={{marginBottom: 48}}>
+        <TouchableOpacity onPress={this.playArticle.bind(this)}>
+          <Icon style={styles.buttonStyle} name="play" size={15} />
+        </TouchableOpacity>
         <ScrollView>
           <CardSection>
             <Text style={styles.titleStyle}>
@@ -102,5 +109,9 @@ const styles = {
     marginRight: 10
   }
 };
+
+const mapDispatchToProps = dispatch => ({
+  playCurrentArticle: (article) => dispatch(playCurrentArticle(article))
+});
 
 export default ArticleShow;
