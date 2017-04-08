@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, Image } from 'react-native';
+import { Text, Image, View } from 'react-native';
 import { Card, CardSection, Input, Button, Spinner } from './common';
-import { emailChanged, passwordChanged, signupUser } from '../actions';
+import { emailChanged, passwordChanged, signupUser, clearErrors } from '../actions';
 
 class SignupForm extends React.Component {
 
@@ -25,42 +25,44 @@ class SignupForm extends React.Component {
       return <Spinner />;
     } else {
       return (
-        <Button onPress={this.onButtonPress.bind(this)}>
+        <Button
+          onPress={this.onButtonPress.bind(this)}
+          style={styles.buttonStyle}>
           Sign Up
         </Button>
       );
     }
   }
+  componentDidMount() {
+    this.props.clearErrors({message:''})
+  }
 
   render () {
+    console.log(this.props);
     return (
-      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
-        <CardSection>
+      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={styles.pageViewStyle}>
+        <View style={ styles.contentStyle }>
           <Input
             label="Email"
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange.bind(this)}
             value={this.props.email}
-          />
-        </CardSection>
+            />
 
-        <CardSection>
           <Input
             secureTextEntry
             placeholder="password"
             label="Password"
             onChangeText={this.onPasswordChange.bind(this)}
             value={this.props.password} />
-        </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+          <Text style={styles.errorTextStyle}>
+            {this.props.error}
+          </Text>
 
-        <CardSection>
           {this.renderButton()}
-        </CardSection>
 
+        </View>
       </Image>
     );
   }
@@ -81,6 +83,13 @@ const styles = {
     alignSelf: 'center',
     color: 'red',
     backgroundColor: 'transparent'
+  },
+  contentStyle: {
+    width: 300,
+    height: 170,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center'
   }
 };
 
@@ -92,4 +101,5 @@ const mapStateToProps = ({ auth }) => {
 export default connect(mapStateToProps, {
   emailChanged,
   passwordChanged,
-  signupUser } )(SignupForm);
+  signupUser,
+  clearErrors} )(SignupForm);
