@@ -6,6 +6,7 @@ import { EMAIL_CHANGED,
          LOGIN_USER_FAIL,
          LOGIN_USER,
          LOGOUT_USER} from './types';
+import { updateExcludes } from '../actions';
 
 export const emailChanged = (text) => {
   return {
@@ -40,8 +41,15 @@ export const signupUser = (email, password) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(user => loginUserSuccess(dispatch, user))
-        .catch((err) => loginUserFail(dispatch, err));
+      .then(user => {loginUserSuccess(dispatch, user)})
+        .catch((err) => loginUserFail(dispatch, err))
+        .then(updateExcludes({
+          sports: true,
+          business: true,
+          tech: true,
+          entertainment: true,
+          politics: true
+        }))
   };
 };
 
