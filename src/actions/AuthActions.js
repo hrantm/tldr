@@ -65,6 +65,10 @@ const loginUserFail = (dispatch, err) => (
   dispatch({type: LOGIN_USER_FAIL, err})
 );
 
+export const clearErrors = err => dispatch => {
+  dispatch({type: LOGIN_USER_FAIL, err})
+}
+
 const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
