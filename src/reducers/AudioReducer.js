@@ -1,4 +1,4 @@
-import { PLAY_ARTICLE } from './types';
+import { PLAY_ARTICLE } from '../actions/types';
 
 const INITIAL_STATE = {
   currentArticle: 0,

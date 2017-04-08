@@ -29,7 +29,7 @@ class Root extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.auth.user,
-  articles: _.values(state.articles.data)
+  articles: state.articles.data
 });
 
 export default connect(mapStateToProps, null)(Root);
