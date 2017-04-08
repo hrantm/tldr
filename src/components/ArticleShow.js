@@ -69,7 +69,6 @@ class ArticleShow extends React.Component {
             )
           })}
         </ScrollView>
-        <Footer articles={this.props.articles}/>
       </View>
     );
   }
