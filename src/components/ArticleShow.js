@@ -31,7 +31,6 @@ class ArticleShow extends React.Component {
 
   render () {
     const { article } = this.props;
-    console.log(article.smmry);
     const sentences = article.smmry.split(". ").map((el, idx)=> {
                                                       if(idx !== article.smmry.split('. ').length - 1){
                                                         return el.concat('. ')
