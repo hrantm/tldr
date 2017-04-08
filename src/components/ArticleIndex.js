@@ -44,13 +44,12 @@ class ArticleIndex extends React.Component {
     return (
       <View>
         <ListView
+          style={{marginBottom: 50}}
           enableEmptySections
           dataSource={this.dataSource}
           renderRow={this.renderRow}
           />
-        <Footer articles={this.props.articles}/>
       </View>
-
     );
   }
 }
@@ -58,7 +57,7 @@ class ArticleIndex extends React.Component {
 const mapStateToProps = state => {
   return {
     articles: _.values(state.articles.data)
-  }
+  };
 };
 
 export default connect(mapStateToProps, { fetchArticles } )(ArticleIndex);
