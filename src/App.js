@@ -1,12 +1,18 @@
 import React from 'react';
-import { Provider,  } from 'react-redux';
+import { View } from 'react-native';
+import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import firebase from 'firebase';
-import Router from './Router';
+import Root from './components/Root';
 
 class App extends React.Component {
+
+  constructor () {
+    super();
+  }
+
   componentWillMount () {
     var config = {
       apiKey: "AIzaSyDrICZ66cgV_L99qKWyxGaEpYnEaEPBAFY",
@@ -18,11 +24,14 @@ class App extends React.Component {
     };
     firebase.initializeApp(config);
   }
+
   render () {
+
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+    console.log('app is rendering');
     return (
       <Provider store={store}>
-        <Router />
+        <Root store={store}/>
       </Provider>
     );
   }

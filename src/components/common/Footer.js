@@ -88,6 +88,7 @@ const styles = {
   viewStyle: {
     backgroundColor: '#2ac8ff',
     justifyContent: 'center',
+    marginBottom: 20,
     alignItems: 'center',
     height: 48,
     position: 'absolute',
