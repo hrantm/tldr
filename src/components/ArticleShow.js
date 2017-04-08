@@ -1,11 +1,13 @@
 import React from 'react';
 import { Text,
+         View,
          ScrollView,
          Image,
          TouchableWithoutFeedback } from 'react-native';
 import { CardSection, Footer } from './common';
 import Tts from 'react-native-tts';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 class ArticleShow extends React.Component {
 
@@ -49,23 +51,26 @@ class ArticleShow extends React.Component {
       return el
     })
     return (
-      <ScrollView>
-        <CardSection>
-          <Text style={styles.titleStyle}>
-            {article.title}
-          </Text>
-        </CardSection>
+      <View>
+        <ScrollView>
+          <CardSection>
+            <Text style={styles.titleStyle}>
+              {article.title}
+            </Text>
+          </CardSection>
 
-        <CardSection style={ styles.thumbnailContainerStyle}>
-          <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
-        </CardSection>
+          <CardSection style={ styles.thumbnailContainerStyle}>
+            <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
+          </CardSection>
 
-        {realOutput.map((sentence, idx) => {
-          return (
-            <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
-          )
-        })}
-      </ScrollView>
+          {realOutput.map((sentence, idx) => {
+            return (
+              <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
+            )
+          })}
+        </ScrollView>
+        <Footer articles={this.props.articles}/>
+      </View>
     );
   }
 }
