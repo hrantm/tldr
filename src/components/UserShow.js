@@ -8,6 +8,13 @@ import { Button, CardSection } from './common';
 import { logoutUser, fetchExcludes, updateExcludes } from '../actions';
 
 class UserShow extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      excludes: this.props.excludes
+    }
+  }
 
   componentWillMount () {
     Actions.userShow({type: 'reset'});
@@ -29,7 +36,7 @@ class UserShow extends React.Component {
               {firebase.auth().currentUser.email}</Text>
           </View>
 
-          <View >
+          <View style={{paddingTop: 10, paddingBottom: 10}}>
             <Text
               style={styles.titleStyle}
               >Categories:</Text>
@@ -39,50 +46,70 @@ class UserShow extends React.Component {
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Sports"
                   checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={(checked)=> {
+                    console.log("hi", checked)
+                  }}/>
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Politics"
                   checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={(checked)=> {
+                    console.log("hi", checked)
+                  }}/>
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Entertainment"
                   checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={(checked)=> {
+                    console.log("hi", checked)
+                  }}/>
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Tech"
                   checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={(checked)=> {
+                    console.log("hi", checked)
+                  }}/>
               </View>
               <View>
                 <CheckBox
                   underlayColor='transparent'
                   containerStyle={styles.checkContainerStyle}
                   labelBefore={true}
-                  labelStyle={styles.bodyStyle}
+                  labelStyle={styles.labelStyle}
                   label="Business"
                   checked={true}
-                  onChange={(checked)=> console.log("hi", checked)}/>
+                  checkedImage={require('../assets/enabled.png')}
+                  uncheckedImage={require('../assets/disabled.png')}
+                  onChange={(checked)=> {
+                    console.log("hi", checked)
+                  }}/>
               </View>
             </View>
           </View>
@@ -136,13 +163,20 @@ const styles = {
     },
   contentStyle: {
     justifyContent: 'flex-start',
-    height: 400,
+    height: 475,
     backgroundColor: 'transparent'
   },
   bodyStyle: {
     fontSize: 15,
+    paddingLeft: 25,
+    paddingRight: 20,
+    paddingTop: 10,
+    color: '#fff'
+  },
+  labelStyle: {
+    fontSize: 15,
     paddingLeft: 15,
-    paddingRight: 15,
+    paddingRight: 20,
     paddingTop: 10,
     color: '#fff'
   },
@@ -153,7 +187,8 @@ const styles = {
   checkContainerStyle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingRight: 20
+    paddingRight: 20,
+    paddingBottom: 5
   },
   checkStyle: {
     color: '#fff'
