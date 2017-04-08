@@ -11,6 +11,7 @@ class Footer extends React.Component {
       speaking: 'stopped',
       currentArticle: 0 };
     Tts.addEventListener('tts-finish', () => this.nextArticle());
+    this.playArticle = this.playArticle.bind(this);
   }
 
   nextArticle () {
