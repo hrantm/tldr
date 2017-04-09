@@ -70,6 +70,9 @@ const RouterComponent = () => {
         hideNavBar={false}
         key="articleShow"
         component={ArticleShow}
+        rightTitle={<Icon name="play" size={25} />}
+        rightButtonTextStyle={styles.titleStyle}
+        onRight={() => console.log('play')}
         title="Article"
         />
     </Scene>
@@ -102,6 +105,7 @@ const styles = {
   titleStyle: {
     color: '#fff'
   }
-};
+
+}
 
 export default RouterComponent;

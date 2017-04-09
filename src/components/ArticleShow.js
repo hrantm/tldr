@@ -62,9 +62,6 @@ class ArticleShow extends React.Component {
 
     return (
       <View style={{marginBottom: 48}}>
-        <TouchableOpacity onPress={this.playArticle.bind(this)}>
-          <Icon style={styles.buttonStyle} name="play" size={15} />
-        </TouchableOpacity>
         <ScrollView style={{marginBottom: 20}}>
           <CardSection>
             <Text style={styles.titleStyle}>
