@@ -13,8 +13,9 @@ export const fetchExcludes = () => dispatch => {
 }
 
 export const updateExcludes = excludes => dispatch => {
+  const { currentUser } = firebase.auth();
   firebase.database().ref(`users/${currentUser.uid}`).child('excluded').set(excludes)
-    .then(dispatch(receiveExcludes(excludes)))
+    .then(() => dispatch(receiveExcludes(excludes)))
 }
 
 export const receiveExcludes = (allExcludes) => ({
