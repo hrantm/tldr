@@ -2,11 +2,14 @@ import React from 'react';
 import { Text, TouchableOpacity, Image, View } from 'react-native';
 import { CardSection } from './common';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { setCurrentArticle } from '../actions';
 
 class ListItem extends React.Component {
 
   onPress () {
-    Actions.articleShow({article: this.props.article})
+    Actions.articleShow({article: this.props.article});
+    this.props.setCurrentArticle({currentArticle: this.props.article});
   }
 
   render () {
@@ -66,4 +69,8 @@ const styles = {
   }
 };
 
-export default ListItem;
+const mapDispatchToProps = dispatch => ({
+  setCurrentArticle: (article) => dispatch(setCurrentArticle(article))
+});
+
+export default connect(null, mapDispatchToProps)(ListItem);
