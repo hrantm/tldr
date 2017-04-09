@@ -10,7 +10,7 @@ class Footer extends React.Component {
     super(props);
     this.state = {
       speaking: 'stopped',
-      currentArticle: 0 };
+      currentArticle: 1 };
     this.toggleArticle = this.toggleArticle.bind(this);
     this.nextArticle = this.nextArticle.bind(this);
     this.previousArticle = this.previousArticle.bind(this);
