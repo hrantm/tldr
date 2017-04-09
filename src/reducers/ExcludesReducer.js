@@ -1,17 +1,18 @@
 import { RECEIVE_EXCLUDES } from '../actions/types';
 
 const INITIAL_STATE = {
-  sports: true,
-  business: true,
-  tech: true,
-  entertainment: true,
-  politics: true
+  sports: false,
+  business: false,
+  tech: false,
+  entertainment: false,
+  politics: false
  };
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case RECEIVE_EXCLUDES:
-      return { ...state, ...action.allExcludes};
+    console.log(action);
+      return action.allExcludes;
     default:
       return state;
   }

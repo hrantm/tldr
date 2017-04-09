@@ -3,7 +3,7 @@ import { ListView, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ListItem from './ListItem';
-import { fetchArticles } from '../actions';
+import { fetchArticles, fetchExcludes } from '../actions';
 
 import { Footer } from './common';
 
@@ -12,6 +12,7 @@ class ArticleIndex extends React.Component {
 
   componentWillMount () {
     this.props.fetchArticles();
+    this.props.fetchExcludes();
     sorted = this.sortedArticles(this.props);
     this.createDataSource(sorted);
     this.renderRow = this.renderRow.bind(this);
@@ -54,9 +55,17 @@ class ArticleIndex extends React.Component {
 }
 
 const mapStateToProps = state => {
+  const allArticles = _.values(state.articles.data)
+  const filteredArticles = []
+
+  allArticles.forEach( article => {
+    if(state.excludes[article.category.toLowerCase()]) {
+      filteredArticles.push(article)
+    }
+  })
   return {
-    articles: _.values(state.articles.data)
+    articles: filteredArticles
   };
 };
 
-export default connect(mapStateToProps, { fetchArticles } )(ArticleIndex);
+export default connect(mapStateToProps, { fetchArticles, fetchExcludes } )(ArticleIndex);
