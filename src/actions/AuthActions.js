@@ -41,15 +41,15 @@ export const signupUser = (email, password) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(user => {loginUserSuccess(dispatch, user)})
+      .then(user => loginUserSuccess(dispatch, user))
         .catch((err) => loginUserFail(dispatch, err))
-        .then(updateExcludes({
+        .then(() => dispatch(updateExcludes({
           sports: true,
           business: true,
           tech: true,
           entertainment: true,
           politics: true
-        }))
+        })))
   };
 };
 
