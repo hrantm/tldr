@@ -31,11 +31,6 @@ class ArticleShow extends React.Component {
     return flattened;
   }
 
-  playArticle() {
-    console.log('press play article button');
-    this.props.playCurrentArticle(this.props.article);
-  }
-
   openUrl () {
     Linking.openURL(this.props.article.url);
   }
@@ -62,7 +57,7 @@ class ArticleShow extends React.Component {
 
     return (
       <View style={{marginBottom: 48}}>
-        <ScrollView style={{marginBottom: 20}}>
+        <ScrollView >
           <CardSection style={ styles.titleContainerStyle}>
             <Text style={styles.titleStyle}>
               {article.title}
@@ -78,9 +73,6 @@ class ArticleShow extends React.Component {
               {article.category}
             </Text>
 
-            <TouchableOpacity onPress={this.playArticle.bind(this)}>
-              <Icon style={styles.buttonStyle} name="play" size={15} />
-            </TouchableOpacity>
           </CardSection>
 
           {realOutput.map((sentence, idx) => {

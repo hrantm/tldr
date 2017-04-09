@@ -1,4 +1,4 @@
-import { RECEIVE_ARTICLES } from '../actions/types';
+import { RECEIVE_ARTICLES, RECEIVE_CURRENT_ARTICLE } from '../actions/types';
 const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
