@@ -130,7 +130,7 @@ class UserShow extends React.Component {
 
           <View style={styles.contentBackgroundStyle}>
             <Text style={styles.titleStyle}>About:</Text>
-            <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. If even the summaries are too long, tldr uses Google Text-To-Speech to play summarized articles to users.</Text>
+            <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. tldr then uses Google Text-To-Speech to play audio of the summarized articles to users.</Text>
           </View>
         </View>
         <CardSection
