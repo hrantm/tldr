@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import Router from '../Router';
-import { Footer } from './common';
+import Footer from './Footer';
 import _ from 'lodash';
 
 import { connect } from 'react-redux';
@@ -29,7 +29,7 @@ class Root extends React.Component {
 
 const mapStateToProps = state => ({
   user: state.auth.user,
-  articles: _.values(state.articles.data)
+  articles: state.articles.data
 });
 
 export default connect(mapStateToProps, null)(Root);
