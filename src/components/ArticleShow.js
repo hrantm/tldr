@@ -62,11 +62,8 @@ class ArticleShow extends React.Component {
 
     return (
       <View style={{marginBottom: 48}}>
-        <TouchableOpacity onPress={this.playArticle.bind(this)}>
-          <Icon style={styles.buttonStyle} name="play" size={15} />
-        </TouchableOpacity>
         <ScrollView style={{marginBottom: 20}}>
-          <CardSection>
+          <CardSection style={ styles.titleContainerStyle}>
             <Text style={styles.titleStyle}>
               {article.title}
             </Text>
@@ -76,13 +73,23 @@ class ArticleShow extends React.Component {
             <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
           </CardSection>
 
+          <CardSection style={styles.captionContainerStyle}>
+            <Text style={styles.captionTextStyle}>
+              {article.category}
+            </Text>
+
+            <TouchableOpacity onPress={this.playArticle.bind(this)}>
+              <Icon style={styles.buttonStyle} name="play" size={15} />
+            </TouchableOpacity>
+          </CardSection>
+
           {realOutput.map((sentence, idx) => {
             return (
               <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
             )
           })}
           <TouchableOpacity onPress={this.openUrl.bind(this)}>
-            <Text style={styles.showMoreStyle}>Show more</Text>
+            <Text style={styles.showMoreStyle}>Full Article</Text>
           </TouchableOpacity>
         </ScrollView>
 
@@ -93,13 +100,13 @@ class ArticleShow extends React.Component {
 
 const styles = {
   titleStyle: {
-    fontSize: 25,
-    paddingLeft: 15,
-    paddingRight: 15,
+    fontSize: 20,
+    paddingLeft: 5,
+    paddingRight: 5,
     paddingTop: 10,
     paddingBottom: 10,
     color: '#2a2a2a',
-    fontWeight: '900'
+    fontWeight: '900',
   },
   bodyStyle: {
     fontSize: 15,
@@ -113,17 +120,36 @@ const styles = {
     flex: 1,
     width: null,
   },
+  titleContainerStyle: {
+    marginLeft: 10,
+    marginRight: 10
+  },
   thumbnailContainerStyle: {
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
-    marginRight: 10
+    marginRight: 10,
+    borderBottomWidth: 0
+
   },
   showMoreStyle: {
     paddingLeft: 15,
     color: '#0000EE',
     textDecorationLine: 'underline',
     marginTop: 5
+  },
+  captionContainerStyle: {
+    justifyContent: 'space-between',
+    marginLeft: 10,
+    marginRight: 10,
+    paddingRight: 10
+  },
+  captionTextStyle: {
+    fontSize: 15,
+    fontWeight:'600'
+  },
+  buttonStyle: {
+    fontSize: 16
   }
 };
 
