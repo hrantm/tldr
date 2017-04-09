@@ -57,7 +57,7 @@ class ArticleShow extends React.Component {
 
     return (
       <View style={{marginBottom: 48}}>
-        <ScrollView style={{marginBottom: 20}}>
+        <ScrollView >
           <CardSection style={ styles.titleContainerStyle}>
             <Text style={styles.titleStyle}>
               {article.title}
@@ -73,9 +73,6 @@ class ArticleShow extends React.Component {
               {article.category}
             </Text>
 
-            <TouchableOpacity onPress={this.playArticle.bind(this)}>
-              <Icon style={styles.buttonStyle} name="play" size={15} />
-            </TouchableOpacity>
           </CardSection>
 
           {realOutput.map((sentence, idx) => {
