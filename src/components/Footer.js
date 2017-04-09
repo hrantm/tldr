@@ -38,7 +38,10 @@ class Footer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentArticle !== this.props.currentArticle) {
+      console.log('footer receiving new props: ', nextProps);
       this.state.currentArticle = nextProps.currentArticle.id;
+    }
+    if (nextProps.audio !== this.props.audio) {
       this.stopArticle();
       this.playArticle();
     }
@@ -56,7 +59,7 @@ class Footer extends React.Component {
   }
 
   playArticle () {
-    console.log('playArticle', this.props.articles, this.state.currentArticle);
+    console.log('playArticle state:', this.props.currentArticle);
     const article = this.props.articles[this.state.currentArticle];
     const speech = `Next article: ${article.title}. ${article.smmry}`;
     console.log('speaking about:', article);
@@ -132,7 +135,8 @@ const styles = {
 };
 
 const mapStateToProps = state => ({
-  currentArticle: state.audio.currentArticle
+  currentArticle: state.currentArticle,
+  audio: state.audio
 });
 
 export default connect(mapStateToProps, null)(Footer);

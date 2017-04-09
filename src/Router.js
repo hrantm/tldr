@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navigator } from 'react-native';
+import { connect} from 'react-redux';
 import { Scene, Router, Actions, ActionConst } from 'react-native-router-flux';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -8,8 +9,10 @@ import ArticleIndex from './components/ArticleIndex';
 import UserShow from './components/UserShow';
 import ArticleShow from './components/ArticleShow';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { playCurrentArticle } from './actions';
 
-const RouterComponent = () => {
+const RouterComponent = (props) => {
+  console.log('router current article', props.currentArticle);
   return (
     <Router
       navigationBarStyle={styles.headerBackgroundStyle}
@@ -70,9 +73,9 @@ const RouterComponent = () => {
         hideNavBar={false}
         key="articleShow"
         component={ArticleShow}
-        rightTitle={<Icon name="play" size={25} />}
+        rightTitle={<Icon name="play" size={20} />}
         rightButtonTextStyle={styles.titleStyle}
-        onRight={() => console.log('play')}
+        onRight={() => props.playCurrentArticle(props.currentArticle)}
         title="Article"
         />
     </Scene>
@@ -106,6 +109,14 @@ const styles = {
     color: '#fff'
   }
 
-}
+};
 
-export default RouterComponent;
+const mapStateToProps = state => ({
+  currentArticle: state.currentArticle
+});
+
+const mapDispatchToProps = dispatch => ({
+  playCurrentArticle: (article) => dispatch(playCurrentArticle(article))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RouterComponent);
