@@ -1,14 +1,11 @@
 import { PLAY_ARTICLE } from '../actions/types';
 
-const INITIAL_STATE = {
-  currentArticle: 0,
-  speaking: 'stopped'
-};
+const INITIAL_STATE = false
 
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case PLAY_ARTICLE:
-      return {currentArticle: action.article, speaking: 'playing'};
+      return !state;
     default:
       return state;
   }

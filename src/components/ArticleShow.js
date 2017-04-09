@@ -31,11 +31,6 @@ class ArticleShow extends React.Component {
     return flattened;
   }
 
-  playArticle() {
-    console.log('press play article button');
-    this.props.playCurrentArticle(this.props.article);
-  }
-
   openUrl () {
     Linking.openURL(this.props.article.url);
   }
