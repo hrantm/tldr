@@ -22,16 +22,21 @@ class UserShow extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("unmounting");
     if(this.state !== prevState) {
       this.props.updateExcludes(this.state);
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if( JSON.stringify(this.props.excludes) !== JSON.stringify(nextProps.excludes)) {
+      this.setState(nextProps.excludes)
+    }
+  }
 
-  componentWillMount () {
+
+  componentDidMount () {
     Actions.userShow({type: 'reset'});
-    this.props.fetchExcludes();
+    this.props.fetchExcludes()
   };
 
   render () {
