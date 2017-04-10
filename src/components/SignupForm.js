@@ -38,7 +38,6 @@ class SignupForm extends React.Component {
   }
 
   render () {
-    console.log(this.props);
     return (
       <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={styles.pageViewStyle}>
         <View style={ styles.contentStyle }>

@@ -12,7 +12,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { playCurrentArticle } from './actions';
 
 const RouterComponent = (props) => {
-  console.log('router current article', props.currentArticle);
   return (
     <Router
       navigationBarStyle={styles.headerBackgroundStyle}
