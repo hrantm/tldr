@@ -11,7 +11,6 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
     case RECEIVE_EXCLUDES:
-    console.log(action);
       return action.allExcludes;
     default:
       return state;
