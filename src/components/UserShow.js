@@ -128,7 +128,7 @@ class UserShow extends React.Component {
             </View>
           </View>
 
-          <View style={styles.contentBackgroundStyle}>
+          <View style={styles.aboutBackgroundStyle}>
             <Text style={styles.titleStyle}>About:</Text>
             <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. tldr then uses Google Text-To-Speech to play audio of the summarized articles to users.</Text>
           </View>
@@ -186,7 +186,15 @@ const styles = {
     backgroundColor: 'transparent',
     borderRadius: 3,
     margin: 5,
-    paddingBottom: 5
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderColor: '#FD715D'
+  },
+  aboutBackgroundStyle: {
+    backgroundColor: 'transparent',
+    borderRadius: 3,
+    margin: 5,
+    paddingBottom: 10
   },
   bodyStyle: {
     fontSize: 15,
