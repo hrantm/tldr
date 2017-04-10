@@ -41,7 +41,7 @@ class UserShow extends React.Component {
 
   render () {
     return (
-      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
+      <View style={styles.pageViewStyle}>
 
         <View style={styles.contentStyle}>
           <View style={styles.contentBackgroundStyle} >
@@ -140,7 +140,7 @@ class UserShow extends React.Component {
             Logout
           </Button>
         </CardSection>
-      </Image>
+      </View>
     );
   }
 }
@@ -164,16 +164,16 @@ const styles = {
     width: null,
     height: null,
     paddingTop: 65,
-    resizeMode: 'cover',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    backgroundColor: '#87DBFD'
   },
   titleStyle: {
     paddingLeft: 15,
     paddingRight: 20,
     paddingTop: 10,
-    color: '#fff',
+    color: '#334B5D',
     fontWeight: '600',
     fontSize: 16
     },
@@ -183,7 +183,7 @@ const styles = {
     backgroundColor: 'transparent'
   },
   contentBackgroundStyle: {
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: 'transparent',
     borderRadius: 3,
     margin: 5,
     paddingBottom: 5
@@ -193,14 +193,14 @@ const styles = {
     paddingLeft: 25,
     paddingRight: 20,
     paddingTop: 10,
-    color: '#fff'
+    color: '#334B5D'
   },
   labelStyle: {
     fontSize: 15,
     paddingLeft: 15,
     paddingRight: 20,
     paddingTop: 10,
-    color: '#fff'
+    color: '#334B5D'
   },
   buttonStyle: {
     backgroundColor: 'transparent',
@@ -213,7 +213,7 @@ const styles = {
     paddingBottom: 5
   },
   checkStyle: {
-    color: '#fff'
+    color: '#334B5D'
   }
 }
 
