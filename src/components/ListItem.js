@@ -42,7 +42,8 @@ const styles = {
     fontSize: 15,
     paddingLeft: 15,
     paddingRight: 100,
-    fontWeight: '900'
+    fontWeight: '900',
+    color: '#555459'
   },
   listStyle: {
     flexDirection: 'row'
@@ -50,7 +51,8 @@ const styles = {
   detailStyle: {
     fontSize: 12,
     paddingLeft: 15,
-    fontWeight: '600'
+    fontWeight: '600',
+    color: '#555459'
   },
   bodyStyle: {
     fontSize: 12,
