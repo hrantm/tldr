@@ -54,7 +54,7 @@ const RouterComponent = (props) => {
         onRight={() =>  Actions.userShow()}
         />
       <Scene
-        navigationBarStyle={styles.headerBackgroundStyle}
+        navigationBarStyle={styles.newHeaderStyle}
         titleStyle={styles.titleStyle}
         hideNavBar={false}
         key="userShow"
@@ -98,14 +98,14 @@ const styles = {
     borderBottomColor: 'transparent'
   },
   newHeaderStyle: {
-    backgroundColor:'#334B5D',
+    backgroundColor:'#87DBFD',
     borderBottomWidth: 0,
     borderBottomLeftRadius: 1,
     borderBottomRightRadius: 1,
     borderBottomColor: 'transparent',
   },
   titleStyle: {
-    color: '#fff'
+    color: '#334B5D'
   }
 
 };

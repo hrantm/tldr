@@ -68,6 +68,8 @@ class ArticleShow extends React.Component {
             <Image source={{uri: article.img_url}} style={styles.thumbnailStyle} />
           </CardSection>
 
+
+
           <CardSection style={styles.captionContainerStyle}>
             <Text style={styles.captionTextStyle}>
               {article.category}
@@ -99,8 +101,8 @@ const styles = {
     paddingRight: 5,
     paddingTop: 10,
     paddingBottom: 10,
-    color: '#2a2a2a',
     fontWeight: '900',
+    color: '#555459'
   },
   bodyStyle: {
     fontSize: 15,
@@ -130,9 +132,8 @@ const styles = {
     alignSelf: 'center',
     height: 25,
     width: 100,
-    backgroundColor: '#2ac8ff',
+    backgroundColor: '#FD715D',
     borderRadius: 8,
-
   },
   showMoreTextStyle: {
     alignSelf: 'center',
@@ -150,7 +151,8 @@ const styles = {
   },
   captionTextStyle: {
     fontSize: 15,
-    fontWeight:'600'
+    fontWeight:'600',
+    color: '#555459'
   },
   buttonStyle: {
     fontSize: 16
