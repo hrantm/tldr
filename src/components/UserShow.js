@@ -68,8 +68,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Sports"
                   checked={this.state.sports}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={ this.toggle('sports') }
                   />
               </View>
@@ -81,8 +81,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Politics"
                   checked={this.state.politics}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('politics')}
                   />
               </View>
@@ -94,8 +94,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Entertainment"
                   checked={this.state.entertainment}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('entertainment')}
                   />
               </View>
@@ -107,8 +107,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Tech"
                   checked={this.state.tech}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('tech')}
                   />
               </View>
@@ -120,8 +120,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Business"
                   checked={this.state.business}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('business')}
                   />
               </View>
