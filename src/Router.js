@@ -95,10 +95,10 @@ const styles = {
   headerBackgroundStyle: {
     backgroundColor:'transparent',
     borderBottomWidth: 0,
-    borderBottomColor: 'transparent',
+    borderBottomColor: 'transparent'
   },
   newHeaderStyle: {
-    backgroundColor:'#2ac8ff',
+    backgroundColor:'#334B5D',
     borderBottomWidth: 0,
     borderBottomLeftRadius: 1,
     borderBottomRightRadius: 1,
