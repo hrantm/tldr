@@ -16,11 +16,19 @@ This application was implemented with a rails backend and React-Native for the m
 
 In order to get current news sources, we built a rails app that would make AJAX requests to the [NewsAPI](https://newsapi.org/#documentation). References to these articles were saved in a PostgreSQL database. Our rails app provided an easy to use API for our mobile app to have access to those articles.
 
+Article feed:
+
+![feed](docs/feed.png)
+
 ### Summarized Articles
 
 Our rails backend also created summarizations of news articles through the use of the [SMMRY API](http://smmry.com/about).
 
 The mobile frontend can access article information and article summaries with the use of AJAX requests which return JSON objects from the rails backend.
+
+Summarized articles:
+
+![show](docs/show.png)
 
 ### Text To Speech
 
