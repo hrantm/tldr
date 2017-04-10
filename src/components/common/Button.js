@@ -26,7 +26,7 @@ const styles = {
     alignSelf: 'center',
     height: 40,
     width: 170,
-    backgroundColor: '#CF5283',
+    backgroundColor: '#FD715D',
     borderRadius: 20,
     marginLeft: 5,
     marginRight: 5
