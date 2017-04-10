@@ -39,7 +39,6 @@ class Footer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentArticle !== this.props.currentArticle) {
-      console.log('footer receiving new props: ', nextProps);
       this.state.currentArticle = nextProps.currentArticle.id;
     }
     if (nextProps.audio !== this.props.audio) {
@@ -49,7 +48,6 @@ class Footer extends React.Component {
   }
 
   toggleArticle () {
-    console.log('playing:', this.state.speaking, this.state.currentArticle);
     if (this.state.speaking === 'stopped') {
       this.playArticle();
     } else if (this.state.speaking === 'playing') {
@@ -60,10 +58,8 @@ class Footer extends React.Component {
   }
 
   playArticle () {
-    console.log('playArticle state:', this.props.currentArticle);
     const article = this.props.articles[this.state.currentArticle];
     const speech = `Next article: ${article.title}. ${article.smmry}`;
-    console.log('speaking about:', article);
     Tts.speak(speech);
     this.setState({speaking: 'playing'});
     this.setState({currentArticleTitle: article.title});
