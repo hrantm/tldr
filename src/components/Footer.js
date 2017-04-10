@@ -10,7 +10,8 @@ class Footer extends React.Component {
     super(props);
     this.state = {
       speaking: 'stopped',
-      currentArticle: 1 };
+      currentArticle: 1,
+      currentArticleTitle:''};
     this.toggleArticle = this.toggleArticle.bind(this);
     this.nextArticle = this.nextArticle.bind(this);
     this.previousArticle = this.previousArticle.bind(this);
@@ -65,6 +66,7 @@ class Footer extends React.Component {
     console.log('speaking about:', article);
     Tts.speak(speech);
     this.setState({speaking: 'playing'});
+    this.setState({currentArticleTitle: article.title});
   }
 
   resumeArticle () {
@@ -93,17 +95,26 @@ class Footer extends React.Component {
 
   render () {
     return (
-      <View>
-        <View style={styles.viewStyle}>
-          <TouchableWithoutFeedback onPress={this.previousArticle}>
-            <Icon name="step-backward" style={styles.buttonStyle} size={15} />
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={this.toggleArticle}>
-            {this.renderIcon()}
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback  onPress={this.nextArticle}>
-            <Icon style={styles.buttonStyle} name="step-forward" size={15} />
-          </TouchableWithoutFeedback>
+      <View style={styles.viewStyle}>
+          <View style={styles.footerStyle}>
+            <View style={styles.playerStyle}>
+
+              <TouchableWithoutFeedback onPress={this.previousArticle}>
+                <Icon name="step-backward" style={styles.buttonStyle} size={15} />
+              </TouchableWithoutFeedback>
+
+              <TouchableWithoutFeedback onPress={this.toggleArticle}>
+                {this.renderIcon()}
+              </TouchableWithoutFeedback>
+
+              <TouchableWithoutFeedback  onPress={this.nextArticle}>
+                <Icon style={styles.buttonStyle} name="step-forward" size={15} />
+              </TouchableWithoutFeedback>
+            </View>
+
+          <View>
+            <Text style={styles.footerTitleStyle}>Now Playing: {this.state.currentArticleTitle.slice(0, 15)}...</Text>
+          </View>
         </View>
       </View>
 
@@ -123,6 +134,20 @@ const styles = {
     left: 0,
     width: '100%',
     flexDirection: 'row'
+  },
+  playerStyle:{
+    flexDirection: 'row',
+    paddingLeft: 10
+  },
+  footerStyle: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between'
+  },
+  footerTitleStyle:{
+    fontSize: 14,
+    color: '#fff',
+    paddingRight: 20
   },
   buttonStyle: {
     paddingLeft: 10,
