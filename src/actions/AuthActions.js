@@ -50,6 +50,7 @@ export const signupUser = (email, password) => {
           entertainment: true,
           politics: true
         })))
+        .catch((err) => loginUserFail(dispatch, err))
   };
 };
 
