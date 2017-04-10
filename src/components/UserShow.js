@@ -41,7 +41,7 @@ class UserShow extends React.Component {
 
   render () {
     return (
-      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
+      <View style={styles.pageViewStyle}>
 
         <View style={styles.contentStyle}>
           <View style={styles.contentBackgroundStyle} >
@@ -68,8 +68,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Sports"
                   checked={this.state.sports}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={ this.toggle('sports') }
                   />
               </View>
@@ -81,8 +81,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Politics"
                   checked={this.state.politics}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('politics')}
                   />
               </View>
@@ -94,8 +94,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Entertainment"
                   checked={this.state.entertainment}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('entertainment')}
                   />
               </View>
@@ -107,8 +107,8 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Tech"
                   checked={this.state.tech}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('tech')}
                   />
               </View>
@@ -120,15 +120,15 @@ class UserShow extends React.Component {
                   labelStyle={styles.labelStyle}
                   label="Business"
                   checked={this.state.business}
-                  checkedImage={require('../assets/enabled.png')}
-                  uncheckedImage={require('../assets/disabled.png')}
+                  checkedImage={require('../assets/cb_enabled.png')}
+                  uncheckedImage={require('../assets/cb_disabled.png')}
                   onChange={this.toggle('business')}
                   />
               </View>
             </View>
           </View>
 
-          <View style={styles.contentBackgroundStyle}>
+          <View style={styles.aboutBackgroundStyle}>
             <Text style={styles.titleStyle}>About:</Text>
             <Text style={styles.bodyStyle}>tldr (Too Long Didn't Read) is a mobile news aggregation application made with react-native in 1 week. Using SMMRY and News APIs, tldr produces a feed of summarized news articles. tldr then uses Google Text-To-Speech to play audio of the summarized articles to users.</Text>
           </View>
@@ -140,7 +140,7 @@ class UserShow extends React.Component {
             Logout
           </Button>
         </CardSection>
-      </Image>
+      </View>
     );
   }
 }
@@ -164,16 +164,16 @@ const styles = {
     width: null,
     height: null,
     paddingTop: 65,
-    resizeMode: 'cover',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    backgroundColor: '#87DBFD'
   },
   titleStyle: {
     paddingLeft: 15,
     paddingRight: 20,
     paddingTop: 10,
-    color: '#fff',
+    color: '#334B5D',
     fontWeight: '600',
     fontSize: 16
     },
@@ -183,24 +183,32 @@ const styles = {
     backgroundColor: 'transparent'
   },
   contentBackgroundStyle: {
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: 'transparent',
     borderRadius: 3,
     margin: 5,
-    paddingBottom: 5
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderColor: '#FD715D'
+  },
+  aboutBackgroundStyle: {
+    backgroundColor: 'transparent',
+    borderRadius: 3,
+    margin: 5,
+    paddingBottom: 10
   },
   bodyStyle: {
     fontSize: 15,
     paddingLeft: 25,
     paddingRight: 20,
     paddingTop: 10,
-    color: '#fff'
+    color: '#334B5D'
   },
   labelStyle: {
     fontSize: 15,
     paddingLeft: 15,
     paddingRight: 20,
     paddingTop: 10,
-    color: '#fff'
+    color: '#334B5D'
   },
   buttonStyle: {
     backgroundColor: 'transparent',
@@ -213,7 +221,7 @@ const styles = {
     paddingBottom: 5
   },
   checkStyle: {
-    color: '#fff'
+    color: '#334B5D'
   }
 }
 

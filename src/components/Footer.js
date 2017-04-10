@@ -120,8 +120,7 @@ class Footer extends React.Component {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#334B5D',
-    justifyContent: 'center',
+    backgroundColor: '#87DBFD',
     marginBottom: 20,
     alignItems: 'center',
     height: 48,
@@ -138,17 +137,15 @@ const styles = {
   footerStyle: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'space-between'
   },
   footerTitleStyle:{
-    fontSize: 14,
-    color: '#fff',
+    color: '#334B5D',
     paddingRight: 20
   },
   buttonStyle: {
     paddingLeft: 10,
     paddingRight: 10,
-    color: '#fff'
+    color: '#334B5D'
   },
   textStyle: {
     fontSize: 20
