@@ -10,7 +10,8 @@ class Footer extends React.Component {
     super(props);
     this.state = {
       speaking: 'stopped',
-      currentArticle: 1 };
+      currentArticle: 1,
+      currentArticleTitle:''};
     this.toggleArticle = this.toggleArticle.bind(this);
     this.nextArticle = this.nextArticle.bind(this);
     this.previousArticle = this.previousArticle.bind(this);
@@ -38,7 +39,6 @@ class Footer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentArticle !== this.props.currentArticle) {
-      console.log('footer receiving new props: ', nextProps);
       this.state.currentArticle = nextProps.currentArticle.id;
     }
     if (nextProps.audio !== this.props.audio) {
@@ -48,7 +48,6 @@ class Footer extends React.Component {
   }
 
   toggleArticle () {
-    console.log('playing:', this.state.speaking, this.state.currentArticle);
     if (this.state.speaking === 'stopped') {
       this.playArticle();
     } else if (this.state.speaking === 'playing') {
@@ -59,12 +58,11 @@ class Footer extends React.Component {
   }
 
   playArticle () {
-    console.log('playArticle state:', this.props.currentArticle);
     const article = this.props.articles[this.state.currentArticle];
     const speech = `Next article: ${article.title}. ${article.smmry}`;
-    console.log('speaking about:', article);
     Tts.speak(speech);
     this.setState({speaking: 'playing'});
+    this.setState({currentArticleTitle: article.title});
   }
 
   resumeArticle () {
@@ -93,17 +91,26 @@ class Footer extends React.Component {
 
   render () {
     return (
-      <View>
-        <View style={styles.viewStyle}>
-          <TouchableWithoutFeedback onPress={this.previousArticle}>
-            <Icon name="step-backward" style={styles.buttonStyle} size={15} />
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={this.toggleArticle}>
-            {this.renderIcon()}
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback  onPress={this.nextArticle}>
-            <Icon style={styles.buttonStyle} name="step-forward" size={15} />
-          </TouchableWithoutFeedback>
+      <View style={styles.viewStyle}>
+          <View style={styles.footerStyle}>
+            <View style={styles.playerStyle}>
+
+              <TouchableWithoutFeedback onPress={this.previousArticle}>
+                <Icon name="step-backward" style={styles.buttonStyle} size={15} />
+              </TouchableWithoutFeedback>
+
+              <TouchableWithoutFeedback onPress={this.toggleArticle}>
+                {this.renderIcon()}
+              </TouchableWithoutFeedback>
+
+              <TouchableWithoutFeedback  onPress={this.nextArticle}>
+                <Icon style={styles.buttonStyle} name="step-forward" size={15} />
+              </TouchableWithoutFeedback>
+            </View>
+
+          <View>
+            <Text style={styles.footerTitleStyle}>Now Playing: {this.state.currentArticleTitle.slice(0, 15)}...</Text>
+          </View>
         </View>
       </View>
 
@@ -113,7 +120,7 @@ class Footer extends React.Component {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#2ac8ff',
+    backgroundColor: '#334B5D',
     justifyContent: 'center',
     marginBottom: 20,
     alignItems: 'center',
@@ -123,6 +130,20 @@ const styles = {
     left: 0,
     width: '100%',
     flexDirection: 'row'
+  },
+  playerStyle:{
+    flexDirection: 'row',
+    paddingLeft: 10
+  },
+  footerStyle: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between'
+  },
+  footerTitleStyle:{
+    fontSize: 14,
+    color: '#fff',
+    paddingRight: 20
   },
   buttonStyle: {
     paddingLeft: 10,

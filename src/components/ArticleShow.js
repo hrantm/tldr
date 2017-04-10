@@ -73,6 +73,11 @@ class ArticleShow extends React.Component {
               {article.category}
             </Text>
 
+            <TouchableOpacity
+              style={styles.showMoreStyle}
+              onPress={this.openUrl.bind(this)}>
+              <Text style={styles.showMoreTextStyle}>Full Article</Text>
+            </TouchableOpacity>
           </CardSection>
 
           {realOutput.map((sentence, idx) => {
@@ -80,9 +85,6 @@ class ArticleShow extends React.Component {
               <Text key={idx}style={styles.bodyStyle}>{sentence}</Text>
             )
           })}
-          <TouchableOpacity onPress={this.openUrl.bind(this)}>
-            <Text style={styles.showMoreStyle}>Full Article</Text>
-          </TouchableOpacity>
         </ScrollView>
 
       </View>
@@ -125,15 +127,25 @@ const styles = {
 
   },
   showMoreStyle: {
-    paddingLeft: 15,
-    color: '#0000EE',
-    textDecorationLine: 'underline',
-    marginTop: 5
+    alignSelf: 'center',
+    height: 25,
+    width: 100,
+    backgroundColor: '#2ac8ff',
+    borderRadius: 8,
+
+  },
+  showMoreTextStyle: {
+    alignSelf: 'center',
+    color: '#fff',
+    fontSize: 13,
+    fontWeight: '600',
+    paddingTop: 4
   },
   captionContainerStyle: {
     justifyContent: 'space-between',
-    marginLeft: 10,
-    marginRight: 10,
+    alignItems: 'center',
+    marginLeft: 7,
+    marginRight: 7,
     paddingRight: 10
   },
   captionTextStyle: {

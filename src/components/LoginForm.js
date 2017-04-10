@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.clearErrors({message:''})
+    this.props.clearErrors({message:''});
   }
 
   renderButton () {
@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 
   render () {
     return (
-      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
+      <View style={styles.paneStyle}>
         <View style={styles.contentStyle}>
           <Input
             placeholder="email@gmail.com"
@@ -57,9 +57,8 @@ class LoginForm extends React.Component {
           </Text>
 
             {this.renderButton()}
-
         </View>
-      </Image>
+      </View>
     );
   }
 }
@@ -81,11 +80,14 @@ const styles = {
     backgroundColor: 'transparent'
   },
   contentStyle: {
-    width: 300,
-    height: 170,
+    width: 200,
+    height: 170
+  },
+  paneStyle: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'center'
+    backgroundColor: '#87DBFD'
   }
 };
 

@@ -6,26 +6,23 @@ class Splash extends React.Component {
 
   render(){
     return(
-      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={ styles.pageViewStyle}>
-
+      <View style={styles.pageViewStyle}>
         <Image
-          source={require('../assets/logo.png')}
+          source={require('../assets/newspaperSmaller.png')}
           style={styles.logoStyle}/>
-
-        <CardSection style={ styles.buttonViewStyle} >
-            <Button
-              styles={ styles.buttonStyle }
-              onPress={Actions.login}>
-              Login
-            </Button>
-            <Button
-              styles={ styles.buttonStyle }
-              onPress={Actions.signup}>
-              Signup
-            </Button>
-          </CardSection>
-
-      </Image>
+          <CardSection style={ styles.buttonViewStyle} >
+              <Button
+                styles={ styles.buttonStyle }
+                onPress={Actions.login}>
+                Login
+              </Button>
+              <Button
+                styles={ styles.buttonStyle }
+                onPress={Actions.signup}>
+                Signup
+              </Button>
+            </CardSection>
+      </View>
     );
   }
 
@@ -34,16 +31,13 @@ class Splash extends React.Component {
 const styles = {
   pageViewStyle: {
     flex: 1,
-    width: null,
-    height: null,
-    resizeMode: 'cover',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  logoViewStyle: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#87DBFD'
+  },
+  logoViewStyle: {
+    width: 50,
+    height: 50
   },
   buttonViewStyle: {
     position: 'absolute',
