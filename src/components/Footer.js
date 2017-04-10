@@ -120,7 +120,7 @@ class Footer extends React.Component {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#2ac8ff',
+    backgroundColor: '#334B5D',
     justifyContent: 'center',
     marginBottom: 20,
     alignItems: 'center',
