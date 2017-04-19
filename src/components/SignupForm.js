@@ -39,7 +39,7 @@ class SignupForm extends React.Component {
 
   render () {
     return (
-      <Image source={require('../assets/Colorful-Minimalistic-Background.jpg')} style={styles.pageViewStyle}>
+      <View style={styles.paneStyle}>
         <View style={ styles.contentStyle }>
           <Input
             label="Email"
@@ -62,7 +62,7 @@ class SignupForm extends React.Component {
           {this.renderButton()}
 
         </View>
-      </Image>
+      </View>
     );
   }
 }
@@ -85,10 +85,13 @@ const styles = {
   },
   contentStyle: {
     width: 300,
-    height: 170,
+    height: 170
+  },
+  paneStyle: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'center'
+    backgroundColor: '#87DBFD'
   }
 };
 
